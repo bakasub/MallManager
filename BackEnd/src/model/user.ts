@@ -8,6 +8,12 @@ export class User{
     public username: string;
     @Column({type: 'varchar'})
     public password: string;
+    @Column({type:'varchar'})
+    public phone:string;
+    @Column({type:'varchar'})
+    public email:string;
+    @Column({type:'varchar'})
+    public address:string
     @Column({type: 'int', default: 1}) // 1: user; 2: admin
     public role: string;
     @Column({type: 'int', default: 1}) // 1: mở; 2: lock

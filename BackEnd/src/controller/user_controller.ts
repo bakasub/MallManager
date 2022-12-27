@@ -12,7 +12,7 @@ export class UserController{
         let userFind = await this.userService.login(user.username);
         if (userFind.length){
             res.status(200).json({
-                mess:"Tài khoản đã tồn tại!!! ",
+                message:"Tài khoản đã tồn tại!!! ",
             })
         }else {
             user.password = await bcrypt.hash(user.password, 10);
@@ -26,30 +26,30 @@ export class UserController{
         let userFind = await this.userService.login(user.username);
         if (userFind.length == 0){
             return res.status(200).json({
-                massage: 'username or password wrong!!'
+                message: 'username or password wrong!!'
             })
         }else {
             let comparePassword = await bcrypt.compare(user.password, userFind[0].password)
             if (!comparePassword) {
                 return res.json({
-                    massage: 'Mật khẩu sai'
+                    message: 'Mật khẩu sai'
                 })
 
             } else {
                 let payload = {
-                    id: userFind[0].id,
-                    name: userFind[0].name
+                    user_id: userFind[0].user_id,
+                    username: userFind[0].username
                 }
 
                 let secret = 'vu'
                 let token = await jwt.sign(payload, secret, {
                     expiresIn: 36000
                 });
-
-                return res.json({
+                console.log(userFind[0])
+                return res.status(200).json({
                     token: token,
-                    id: userFind[0].id,
-                    userName: userFind[0].name
+                    user_id: userFind[0].user_id,
+                    userName: userFind[0].username
                 })
             }
         }

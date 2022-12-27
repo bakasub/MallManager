@@ -22,9 +22,9 @@ class UserService {
             return users;
         };
         this.edit = async (req, res) => {
-            let id = +req.params.id;
-            let user = req.body;
-            return await this.userRepository.update({ id: id }, user);
+            let id = +req.params.user_id;
+            let users = req.body;
+            return await this.userRepository.update({ user_id: id }, users);
         };
         this.delete = async (req, res) => {
             let id = +req.params.id;
