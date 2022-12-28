@@ -19,6 +19,18 @@ class ProductController {
         let product = await ProductService.updateInfo(productId,input)
         return res.status(200).json(product)
     }
+
+    removeProduct = async (req: Request, res: Response) => {
+        let productId = req.params.id
+        let result = await ProductService.removeProduct(productId)
+        return res.status(200).json(result)
+    }
+
+    displayOne = async (req: Request, res: Response) => {
+        let productId = req.params.id
+        let product = await ProductService.getOne(productId)
+        return res.status(200).json(product)
+    }
 }
 
 export default new ProductController()

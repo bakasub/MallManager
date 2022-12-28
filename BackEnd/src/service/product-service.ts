@@ -35,6 +35,23 @@ class ProductService {
             return result
         }
     }
+
+    removeProduct = async (id) => {
+        let result = ''
+        const findProduct = await this.productRepo.findOneBy({id: id})
+        if (!findProduct) {
+            result = 'That product doesnt exist'
+        } else {
+            await this.productRepo.delete(id)
+            result = 'Product removed'
+        }
+        return result
+    }
+
+    getOne = async (id) => {
+        let product = await this.productRepo.findOneBy({id: id})
+        return product
+    }
 }
 
 export default new ProductService()
