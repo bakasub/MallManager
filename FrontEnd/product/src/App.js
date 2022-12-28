@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import ListProduct from "./pages/products/ListProduct";
 import AddProduct from "./pages/products/AddProduct";
 import DetailProduct from "./pages/products/DetailProduct";
+import CartProduct from "./pages/products/CartProduct";
 function App() {
   // const user = useSelector(state => {
   //   return state.user.currentUser;
@@ -21,7 +22,7 @@ function App() {
                   <Route path={'home'} element={<Home/>}>
                     <Route path={''} element={<ListProduct/>}></Route>
                     <Route path={'add-product'} element={<AddProduct/>}></Route>
-                    {/*<Route path={'my-blogs'} element={<MyBlogs></MyBlogs>}></Route>*/}
+                    <Route path={'cart'} element={<CartProduct/>}></Route>
                     <Route path='detail/:product_id' element={<DetailProduct></DetailProduct>}></Route>
                   </Route>
 

@@ -8,6 +8,7 @@ function RegisterPage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleRegister = async (values) =>{
+        console.log(values,'valuessss')
         if (values.password === values.re_password){
             await dispatch(register(values));
             await navigate('/')
@@ -34,11 +35,11 @@ function RegisterPage() {
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Password</label>
-                            <Field type={'text'} name={'password'} className={'form-control'}/>
+                            <Field type={'password'} name={'password'} className={'form-control'}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Re_Password</label>
-                            <Field type={'text'} name={'re_password'} className={'form-control'}/>
+                            <Field type={'password'} name={'re_password'} className={'form-control'}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Email</label>

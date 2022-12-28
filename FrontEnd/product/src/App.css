@@ -36,7 +36,7 @@
     transform: rotate(360deg);
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap');
+
 
 html,body{
   width: 100%;
@@ -110,7 +110,7 @@ a:hover{
     font-size: 110%;
   }
   .carousel-caption .btn{
-    font-size: 90%;
+    font-size: 100%;
     padding: 4px 8px;
   }
 }

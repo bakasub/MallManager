@@ -40,7 +40,7 @@ function LoginPage() {
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Password</label>
-                            <Field type={'text'} name={'password'} className={'form-control'}/>
+                            <Field type={'password'} name={'password'} className={'form-control'}/>
                         </div>
                         <button type="submit">Submit</button>
                         <button type="submit" className="ml-3">

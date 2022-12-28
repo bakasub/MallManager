@@ -9,20 +9,21 @@ class ProductController {
             return res.status(200).json(products);
         };
         this.finByName = async (req, res) => {
-            let product = req.body;
-            let productFind = await this.productService.findByName(product.product_name);
+            let product = req.query;
+            let productFind = await this.productService.findByName(product.name_product);
             return res.status(201).json(productFind);
         };
         this.add = async (req, res) => {
-            let products = await this.productService.add(req, res);
+            let product = req.body;
+            let products = await this.productService.add(product);
             return res.status(200).json(products);
         };
         this.edit = async (req, res) => {
-            let products = await this.productService.edit(req, res);
+            let products = await this.productService.edit(+req.params.product_id, req.body);
             return res.status(200).json(products);
         };
         this.delete = async (req, res) => {
-            let products = await this.productService.delete(req, res);
+            let products = await this.productService.delete(+req.params.product_id);
             return res.status(200).json(products);
         };
         this.productService = new product_service_1.ProductService();

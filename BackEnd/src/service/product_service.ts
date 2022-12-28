@@ -17,23 +17,21 @@ export class ProductService{
         return products
     }
     findByName = async (name_product)=>{
-        let products = await this.productRepository.query(`select * from posts where name_product like '%${name_product}%'`)
+        let products = await this.productRepository.query(`select * from products where name_product like '%${name_product}%'`)
         return products
     }
-    add = async (req:Request,res:Response)=>{
-        let product = req.body;
+    add = async (product)=>{
         let products = await this.productRepository.save(product)
         return products
     }
-    edit = async (req:Request,res:Response)=>{
-        let id= +req.params.product_id;
-        let product = req.body;
-        let products= await this.productRepository.update({product_id:id},product);
+    edit = async (product_id,product)=>{
+        // let product_id= +req.params.product_id;
+        // let product = req.body;
+        let products= await this.productRepository.update(product_id,product);
         return products
     }
-    delete = async (req:Request,res:Response)=>{
-        let id= +req.params.product_id;
-        let products =await this.productRepository.delete(id);
+    delete = async (productId:number)=>{
+        let products =await this.productRepository.delete(productId);
         return products
     }
 }
