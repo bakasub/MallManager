@@ -54,14 +54,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-// import React from 'react';
-//
-// function LoginPage() {
-//     return (
-//         <div>
-//             <h1>Đây là login</h1>
-//         </div>
-//     );
-// }
-//
-// export default LoginPage;

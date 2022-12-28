@@ -7,9 +7,11 @@ import {findProducts} from "../services/productService";
 function Navbar() {
     const dispatch = useDispatch();
     const userName = useSelector(state => {
-        console.log(state.user.currentUser,'dsadcascasc')
+        console.log(state,'hello dsadcascasc')
         return state.user.currentUser;
     })
+    console.log("Hello",userName)
+
     const [find,setFind] = useState()
     console.log(userName.user_id,'abccascsac')
     if (userName.user_id == 1){

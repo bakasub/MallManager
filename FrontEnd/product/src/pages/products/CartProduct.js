@@ -1,9 +1,10 @@
 import React from 'react';
 
 function CartProduct() {
+    console.log("hello")
     return (
         <div>
-            <h1>Cart</h1>
+            <h1 style={{marginTop: "50px"}}>Cart lorem sdndvkvnkdnknfdfnkdfnk</h1>
         </div>
     );
 }
