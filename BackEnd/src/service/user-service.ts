@@ -67,7 +67,11 @@ class UserService {
                 let token = await jwt.sign(payload, SECRET, {expiresIn: 3600})
                 checkUser.token = token
                 checkUser.message = 'Login success'
-                return checkUser
+                return {
+                    token: token,
+                    user_id: userResult.id,
+                    userName: userResult.username
+                }
             }
         }
     }

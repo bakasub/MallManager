@@ -1,16 +1,29 @@
-import {createSlice, current} from "@reduxjs/toolkit";
-import {productList} from "../../services/productService";
-
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {addProducts, deleteProducts, findProducts, getProducts} from "../../services/productService";
 
 const initialState = {
-    currentList: []
+    products: []
 }
-
 const productSlice = createSlice({
-    name: 'product',
+    name: 'products',
     initialState,
+    reducers: {},
     extraReducers: builder => {
-        builder.addCase()
+        builder.addCase(getProducts.fulfilled, (state, action) => {
+            console.log(action, 'accccc')
+            state.products = action.payload.data
+        });
+        builder.addCase(addProducts.fulfilled, (state, action) => {
+            console.log(action.payload, 'productSlice')
+            state.products.push(action.payload)
+        });
+        builder.addCase(deleteProducts.fulfilled, (state, action) => {
+            state.products = state.products.filter(item => item.product_id != action.payload)
+        });
+        builder.addCase(findProducts.fulfilled, (state, action) => {
+            state.products = [...action.payload.data]
+            console.log('state.products', action.payload)
+        })
     }
 })
-export default productSlice.reducer
+export default productSlice.reducer;
