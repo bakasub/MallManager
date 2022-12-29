@@ -13,8 +13,8 @@ function Navbar() {
     console.log("Hello",userName)
 
     const [find,setFind] = useState()
-    console.log(userName.user_id,'abccascsac')
-    if (userName.user_id == 1){
+    console.log(userName.userName,'abccascsac')
+    if (userName.userName ==='admin'){
         return (
             <div className="row">
                 <div className='col-12'>

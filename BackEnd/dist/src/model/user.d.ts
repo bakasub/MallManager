@@ -6,5 +6,4 @@ export declare class User {
     email: string;
     address: string;
     role: string;
-    status: string;
 }

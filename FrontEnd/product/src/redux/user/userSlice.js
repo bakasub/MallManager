@@ -12,11 +12,12 @@ const userSlice = createSlice({
     initialState,
     extraReducers: builder => {
         builder.addCase(login.fulfilled, (state, action) => {
-            state.currentUser = action.payload.data
-            localStorage.setItem("userName", action.payload.data.userName)
+            state.currentUser = action.payload
+            localStorage.setItem("userName", action.payload.userName)
         });
         builder.addCase(register.fulfilled, (state, action) => {
             // console.log(action.payload, 're')
+            // console.log(action,'act')
             state.currentUser = action.payload
             // console.log(action, 'register')
         })

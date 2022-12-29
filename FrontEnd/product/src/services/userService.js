@@ -6,13 +6,13 @@ export const login = createAsyncThunk(
     async (data) => {
         const res = await axios.post('http://localhost:8080/auth/login', data)
         console.log(res,'loginres')
-        return res
+        return res.data
     }
 )
 export const register = createAsyncThunk(
     'user/register',
     async (data) => {
         const res = await axios.post('http://localhost:8080/auth/register', data)
-        return data
+        return res
     }
 )

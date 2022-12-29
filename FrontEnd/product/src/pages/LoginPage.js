@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, Outlet, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {login} from "../services/userService";
@@ -9,46 +9,49 @@ function LoginPage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(state => {
-        console.log(state.user.currentUser,'abcccc')
+        // console.log(state.user.currentUser,'abcccc')
         return state.user.currentUser
     })
-    // const check = user.message;
     const handleLogin = async (values) => {
-        await dispatch(login(values))
-         if (values.username === user.userName) {
-            navigate('/Home')
-        }
-        // if (user.token !== undefined){
-        //     navigate('/Home')
-        // }
-        else {
-            // console.log(user,'userrrr')
-            alert(user.message)
+        let result = await dispatch(login(values))
+        let message = result.payload.message
+        if (message == "success") {
+            navigate("/Home")
+        } else {
+            alert(message)
         }
     }
     return (
-        <div className={'row'}>
-            <div className="offset-3 col-6">
-                <h1 style={{textAlign: "center"}}>Page Login</h1>
-                <Formik initialValues={{username: '', password: ''}} onSubmit={(values) => {
-                    handleLogin(values)
-                }}>
-                    <Form>
-                        <div className="group">
-                            <label htmlFor="exampleInputEmail1">Email address/ Username</label>
-                            <Field type={'text'} name={'username'} className={'form-control'}/>
+        <div style={{
+            width: '100%',
+            height: '100vh',
+            backgroundImage: 'url(https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-nen-hot-girl-cho-may-tinh-chat-luong-cao-scaled.jpeg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+
+        }}>
+            <Formik initialValues={{username: '', password: ''}} onSubmit={(values) => {
+                handleLogin(values)
+            }}>
+                <Form id="form-login">
+                    <h1 className="form-heading">Login</h1>
+                    <div className="form-group">
+                        <i className="far fa-user"></i>
+                        <Field type="text" className="form-input" name={"username"} placeholder="Username"></Field>
+                    </div>
+                    <div className="form-group">
+                        <i className="fas fa-key"></i>
+                        <Field type="password" className="form-input" name={"password"} placeholder="Password"></Field>
+                        <div id="eye">
+                            <i className="far fa-eye"></i>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Password</label>
-                            <Field type={'password'} name={'password'} className={'form-control'}/>
-                        </div>
-                        <button type="submit">Submit</button>
-                        <button type="submit" className="ml-3">
-                            <Link to={'register'}>Register</Link>
-                        </button>
-                    </Form>
-                </Formik>
-            </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                    <button type="button" className="ml-3">
+                        <Link to={'register'}>Register</Link>
+                    </button>
+                </Form>
+            </Formik>
         </div>
     );
 }

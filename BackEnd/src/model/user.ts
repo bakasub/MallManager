@@ -16,6 +16,4 @@ export class User{
     public address:string
     @Column({type: 'int', default: 1}) // 1: user; 2: admin
     public role: string;
-    @Column({type: 'int', default: 1}) // 1: mở; 2: lock
-    public status: string;
 }

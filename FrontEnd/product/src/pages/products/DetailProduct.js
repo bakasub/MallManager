@@ -47,6 +47,7 @@ function DetailBlog() {
             <div className="container-fluid padding">
                 <div className="row text-center padding">
                     {products.map((itemB, index) => {
+                        console.log(user,'userrrr')
                         if (user.userName =='admin' && itemB.product_id == product_id) return (
                             <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
                                 <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
@@ -72,7 +73,7 @@ function DetailBlog() {
                                 </Link>
                             </div>
                         )
-                        if (itemB.status === 1 && itemB.product_id == product_id)
+                        if (itemB.product_id == product_id)
                             return (
                                 <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
                                     <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>

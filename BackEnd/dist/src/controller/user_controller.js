@@ -14,13 +14,13 @@ class UserController {
             let userFind = await this.userService.login(user.username);
             if (userFind.length) {
                 res.status(200).json({
-                    message: "Tài khoản đã tồn tại!!! ",
+                    message: "Tài khoản đã tồn tại!!! "
                 });
             }
             else {
                 user.password = await bcrypt_1.default.hash(user.password, 10);
                 let users = await this.userService.add(user);
-                return res.status(201).json(users);
+                return res.status(201).json({ message: "create done" });
             }
         };
         this.login = async (req, res) => {
@@ -51,7 +51,8 @@ class UserController {
                     return res.status(200).json({
                         token: token,
                         user_id: userFind[0].user_id,
-                        userName: userFind[0].username
+                        userName: userFind[0].username,
+                        message: 'success'
                     });
                 }
             }

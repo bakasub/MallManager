@@ -1,65 +1,109 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {Field, Form, Formik} from "formik";
-import {useDispatch} from "react-redux";
-import {register} from "../services/userService";
+import {useDispatch, useSelector} from "react-redux";
+import {login, register} from "../services/userService";
 
 function RegisterPage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const handleRegister = async (values) =>{
-        console.log(values,'valuessss')
-        if (values.password === values.re_password){
-            await dispatch(register(values));
-            await navigate('/')
-        }
-        // else if (values.phone === '' || values.username === ''||values.email==='' ||values.password ===''||values.re_password===''||values.address===''){
-        //     alert('nhập hết các trường dữ liệu')
-        // }
-        else {
+    const [message, setMessage] = useState('')
+    const handleRegister = async (values) => {
+        if (values.username === '') {
+            alert('chưa nhập username')
+            navigate('')
+        } else if (values.password === '') {
+            alert('chưa nhập password')
+            navigate('')
+        } else if (values.re_password === '') {
+            alert('chưa nhập re_password')
+            navigate('')
+        } else if (values.email === '') {
+            alert('chưa nhập email')
+            navigate('')
+        } else if (values.phone === '') {
+            alert('chưa nhập phone')
+            navigate('')
+        } else if (values.address === '') {
+            alert('chưa nhập address')
+            navigate('')
+        } else if ((values.password !== values.re_password) && values.password.length !== 0) {
             alert('Password and rePassword wrong')
+        } else {
+            let result = await dispatch(register(values));
+            if (result.payload.data.message === "Tài khoản đã tồn tại!!! ") {
+                setMessage(result.payload.data.message)
+            } else {
+                navigate('/')
+            }
         }
+        // else {
+        //     alert(message)
+        //     navigate('/')
+        //
+        // }
+
+        // if (user.data.message === 'Tài khoản đã tồn tại!!!') {
+        //     // alert(user);
+        //     navigate('')
+        // }
+
     }
     return (
-        <div className={'row'}>
-            <div className="offset-3 col-6">
-                <h1 style={{textAlign: "center"}}>Page Register</h1>
-                <Formik initialValues={{username: '',password:'',re_password:'',email:'',phone:'',address:''}} onSubmit={(values)=>{
-                    handleRegister(values)
-                }}>
-                    <Form>
-                        <div className="group">
-                            <label htmlFor="exampleInputEmail1"> Username</label>
-                            <Field type={'text'} name={'username'} className={'form-control'}/>
+        <div style={{
+            width: '100%',
+            height: '100vh',
+            backgroundImage: 'url(https://top10quangbinh.vn/wp-content/uploads/2022/10/anh-gai-xinh-che-mat-24.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
 
+        }}>
+            <Formik initialValues={{username: '', password: '', re_password: '', email: '', phone: '', address: ''}}
+                    onSubmit={(values) => {
+                        handleRegister(values)
+                    }}>
+                <Form id="form-register">
+                    <h1 className="form-heading">Register</h1>
+                    <div className="form-group">
+                        <i className="far fa-user"></i>
+                        <Field type="text" className="form-input" name={"username"} placeholder="Username"></Field>
+                    </div>
+                    <div className="form-group">
+                        <i className="fas fa-key"></i>
+                        <Field type="password" className="form-input" name={"password"} placeholder="Password"></Field>
+                        <div id="eye">
+                            <i className="far fa-eye"></i>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Password</label>
-                            <Field type={'password'} name={'password'} className={'form-control'}/>
+                    </div>
+                    <div className="form-group">
+                        <i className="fas fa-key"></i>
+                        <Field type="password" className="form-input" name={"re_password"}
+                               placeholder="Re_Password"></Field>
+                        <div id="eye">
+                            <i className="far fa-eye"></i>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Re_Password</label>
-                            <Field type={'password'} name={'re_password'} className={'form-control'}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Email</label>
-                            <Field type={'text'} name={'email'} className={'form-control'}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Phone</label>
-                            <Field type={'text'} name={'phone'} className={'form-control'}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Address</label>
-                            <Field type={'text'} name={'address'} className={'form-control'}/>
-                        </div>
-                        <button type="submit" className="">Submit</button>
-                        <button type="submit" className="ml-3">
-                            <Link to={'/'}>Login</Link>
-                        </button>
-                    </Form>
-                </Formik>
-            </div>
+                    </div>
+                    <div className="form-group">
+                        <i className="fas fa-key"></i>
+                        <Field type="email" className="form-input" name={"email"} placeholder="Email"></Field>
+                    </div>
+                    <div className="form-group">
+                        <i className="fas fa-key"></i>
+                        <Field type="number" className="form-input" name={"phone"} placeholder="Phone"></Field>
+                    </div>
+                    <div className="form-group">
+                        <i className="fas fa-key"></i>
+                        <Field type="text" className="form-input" name={"address"} placeholder="Address"></Field>
+                    </div>
+                    <div>
+                        {message}
+                    </div>
+                    <button type="submit">Submit</button>
+                    <button type="button" className="ml-3">
+                        <Link to={'/'}>Login</Link>
+                    </button>
+                </Form>
+            </Formik>
         </div>
     );
 }

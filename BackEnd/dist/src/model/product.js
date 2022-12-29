@@ -18,7 +18,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Product.prototype, "product_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
+    (0, typeorm_1.Column)({ type: 'int', default: 1 }),
     __metadata("design:type", Number)
 ], Product.prototype, "user_id", void 0);
 __decorate([
@@ -26,25 +26,25 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "name_product", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: 'int' }),
+    __metadata("design:type", Number)
 ], Product.prototype, "price", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
-    __metadata("design:type", String)
-], Product.prototype, "quantity", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)
-], Product.prototype, "status", void 0);
+], Product.prototype, "quantity", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
+    (0, typeorm_1.Column)({ type: 'varchar', default: "" }),
     __metadata("design:type", String)
 ], Product.prototype, "url", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], Product.prototype, "description", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'int' }),
+    __metadata("design:type", Number)
+], Product.prototype, "category_id", void 0);
 Product = __decorate([
     (0, typeorm_1.Entity)({ name: 'products' })
 ], Product);
