@@ -8,7 +8,7 @@ function RegisterPage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleRegister = async (values) =>{
-        console.log(values,'valuessss')
+        // console.log(values,'valuessss')
         if (values.password === values.re_password){
             await dispatch(register(values));
             await navigate('/')

@@ -1,0 +1,37 @@
+html, body {
+    background: url("./aurora.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.btn-primary {
+    background-color: rgb(248, 63, 48);
+    border: 1px solid white;
+    height: 45px;
+    left: 45%;
+}
+
+.btn-primary:hover {
+    background-color: rgb(250, 26, 8);
+    border: 1px solid white;
+}
+
+.btn-outline-success {
+    background-color: #ffffff;
+}
+
+.btn-outline-success:hover {
+    background-color: rgb(250, 26, 8)
+}
+
+.loginBox {
+    width: 600px;
+    height: 600px;
+    background: #000;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+}

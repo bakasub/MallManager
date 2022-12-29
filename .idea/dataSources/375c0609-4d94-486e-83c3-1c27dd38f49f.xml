@@ -1205,7 +1205,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="338" parent="308" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>4</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1251,7 +1251,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="347" parent="309" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>4</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
