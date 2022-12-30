@@ -9,11 +9,13 @@ import DetailProduct from "./pages/products/DetailProduct";
 import CartProduct from "./pages/products/CartProduct";
 import Test from "./pages/products/test";
 import EditProduct from "./pages/products/editProducts";
+import {useSelector} from "react-redux";
 
 function App() {
-    // const user = useSelector(state => {
-    //   return state.user.currentUser;
-    // })
+    const user = useSelector(state => {
+      return state.user.currentUser;
+    })
+    console.log(user ,'uuuuuuuuu')
     return (
         <>
             <div className="container-fluid">
@@ -24,10 +26,16 @@ function App() {
 
                     <Route path={'home'} element={<Home/>}>
                         <Route path={''} element={<ListProduct/>}></Route>
-                        <Route path={'add-product'} element={<AddProduct/>}></Route>
-                        <Route path={'cart'} element={<CartProduct/>}></Route>
-                        <Route path='detail/:product_id' element={<DetailProduct></DetailProduct>}></Route>
-                        <Route path={'edit/:product_id'} element={<EditProduct/>}></Route>
+                        { (user.userName != null) ?
+                            <>
+                            <Route path={'add-product'} element={<AddProduct/>}></Route>
+                            <Route path={'cart'} element={<CartProduct/>}></Route>
+                            <Route path='detail/:product_id' element={<DetailProduct></DetailProduct>}></Route>
+                            <Route path={'edit/:product_id'} element={<EditProduct/>}></Route> </>
+                            :
+                            <Route path="*" element={<ListProduct/>}/>
+                        }
+
                     </Route>
                 </Routes>
             </div>
