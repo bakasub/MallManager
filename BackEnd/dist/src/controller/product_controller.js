@@ -19,7 +19,7 @@ class ProductController {
             return res.status(200).json(products);
         };
         this.edit = async (req, res) => {
-            let products = await this.productService.edit(+req.params.product_id, req.body);
+            let products = await this.productService.edit(req.params.product_id, req.body);
             return res.status(200).json(products);
         };
         this.delete = async (req, res) => {

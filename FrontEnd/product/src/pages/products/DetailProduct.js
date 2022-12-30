@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, Outlet, useNavigate, useParams} from "react-router-dom";
 import {deleteProducts, getProducts} from "../../services/productService";
 
 
-function DetailBlog() {
+function DetailProduct() {
     const dispatch = useDispatch();
     const products = useSelector(state => {
         console.log(state)
@@ -54,7 +54,9 @@ function DetailBlog() {
                                 <h3>{itemB.product_name}</h3>
                                 <p>Price: {itemB.price}</p>
                                 <p>Quantity: {itemB.quantity}</p>
-                                <button>Edit</button>
+                                <button onClick={()=>{
+                                    naviGate(`/Home/edit/${product_id}`)
+                                }}>Edit</button>
                                 <button onClick={() => {
                                     dispatch(deleteProducts(product_id))
                                     naviGate('/home')
@@ -92,4 +94,4 @@ function DetailBlog() {
     );
 }
 
-export default DetailBlog;
+export default DetailProduct;

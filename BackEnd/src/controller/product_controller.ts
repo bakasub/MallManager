@@ -23,7 +23,7 @@ export class ProductController{
     }
 
     edit = async  (req:Request,res:Response)=>{
-        let products =  await this.productService.edit(+req.params.product_id,req.body);
+        let products =  await this.productService.edit(req.params.product_id,req.body);
         return res.status(200).json(products);
     }
     delete= async  (req:Request,res:Response)=>{
