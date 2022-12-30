@@ -15,9 +15,12 @@ function LoginPage() {
     const handleLogin = async (values) => {
         let result = await dispatch(login(values))
         let message = result.payload.message
-        if (message == "success") {
+        if (message == "success" && user.userName !== "admin") {
             navigate("/Home")
-        } else {
+        } else if (user.userName == "admin"){
+            navigate("/home/admin")
+        }
+        else {
             alert(message)
         }
     }
@@ -25,7 +28,7 @@ function LoginPage() {
         <div style={{
             width: '100%',
             height: '100vh',
-            backgroundImage: 'url(https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-nen-hot-girl-cho-may-tinh-chat-luong-cao-scaled.jpeg)',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
 
