@@ -37,17 +37,6 @@ function RegisterPage() {
                 navigate('/')
             }
         }
-        // else {
-        //     alert(message)
-        //     navigate('/')
-        //
-        // }
-
-        // if (user.data.message === 'Tài khoản đã tồn tại!!!') {
-        //     // alert(user);
-        //     navigate('')
-        // }
-
     }
     return (
         <div style={{
@@ -107,6 +96,5 @@ function RegisterPage() {
         </div>
     );
 }
-
 export default RegisterPage;
 

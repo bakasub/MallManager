@@ -6,19 +6,16 @@ import {storage} from "../../fireBase";
 import {getDownloadURL, listAll, ref, uploadBytes} from "firebase/storage";
 import {v4} from "uuid";
 import {addProducts, getProducts, updateProducts} from "../../services/productService";
-import {login} from "../../services/userService";
+
 
 function EditProduct() {
     const dispatch = useDispatch();
     const {product_id} = useParams();
     const navigate = useNavigate();
     const product = useSelector(state => {
-        // console.log(state.product.products, 'sadasd')
+
         return state.product.products;
     })
-    // useEffect(() => {
-    //     dispatch(getProducts());
-    // }, [])
     console.log(product)
     const [submitting, setSubmitting] = useState(false)
     const handleEdit = async (values) => {

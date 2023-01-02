@@ -19,7 +19,7 @@ function Navbar() {
             <div className="row">
                 <div className='col-12'>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <Link className="navbar-brand" to={'/Home'}>Logo</Link>
+                        <Link className="navbar-brand" to={'/admin'}>Logo</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false"
@@ -30,7 +30,7 @@ function Navbar() {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item active">
-                                    <Link className="nav-link" to={'add-product'}>Add new product <span
+                                    <Link className="nav-link" to={'/add-product'}>Add new product <span
                                         className="sr-only">(current)</span></Link>
                                 </li>
 
@@ -54,7 +54,7 @@ function Navbar() {
                                         {userName.userName}
                                     </a>
                                     <div className="dropdown-menu">
-                                        <Link className="dropdown-item" to={'/Home/cart'}> Cart</Link>
+                                        <Link className="dropdown-item" to={'/admin'}> Admin</Link>
                                         <div className="dropdown-divider"></div>
                                         <Link onClick={() => {
                                             localStorage.clear()

@@ -48,22 +48,6 @@ function DetailProduct() {
                 <div className="row text-center padding">
                     {products.map((itemB, index) => {
                         console.log(user,'userrrr')
-                        if (user.userName =='admin' && itemB.product_id == product_id) return (
-                            <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
-                                <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
-                                <h3>{itemB.product_name}</h3>
-                                <p>Price: {itemB.price}</p>
-                                <p>Quantity: {itemB.quantity}</p>
-                                <button onClick={()=>{
-                                    naviGate(`/Home/edit/${product_id}`)
-                                }}>Edit</button>
-                                <button onClick={() => {
-                                    dispatch(deleteProducts(product_id))
-                                    naviGate('/home')
-                                }}>Delete
-                                </button>
-                            </div>
-                        )
                         if (user.userName !== null && itemB.product_id == product_id) return (
                             <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
                                 <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>

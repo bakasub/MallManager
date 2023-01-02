@@ -1,8 +1,11 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {deleteProducts, getProducts} from "../../services/productService";
+import {useNavigate, useParams} from "react-router-dom";
+import Navbar from "../../components/Navbar";
 
 function AdminPage() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const products = useSelector(state => {
         console.log(state, 'productlist')
@@ -15,7 +18,7 @@ function AdminPage() {
     return (
         <div className={'row'}>
             <div className="col-12" style={{textAlign: "center"}}>
-                <h1>Admin</h1>
+                    <Navbar></Navbar>
                 <table className="table table-striped">
                     <tr>
                         <th scope="col">STT</th>
@@ -34,7 +37,9 @@ function AdminPage() {
                                     <td>{item.price}</td>
                                     <td>{item.quantity}</td>
                                     <td>{item.description}</td>
-                                    <button >Edit</button>
+                                    <button onClick={()=>{
+                                        navigate(`/edit/${item.product_id}`)
+                                    }}>Edit</button>
                                     <button onClick={() => {
                                         dispatch(deleteProducts(item.product_id))
                                     }}>Delete

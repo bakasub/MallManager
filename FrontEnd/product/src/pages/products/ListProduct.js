@@ -38,12 +38,6 @@ function ListProduct() {
                     </div>
 
                     <div className="carousel-caption">
-                        {/*<h1 className="display-2">Example</h1>*/}
-                        {/*<h3>Autolayout with Boostrap</h3>*/}
-                        {/*<button type="button" className="btn btn-outline-light btn-lg">*/}
-                        {/*    VIEW TUTORIALS*/}
-                        {/*</button>*/}
-                        {/*<button type="button" className="btn btn-primary btn-lg">Get Started</button>*/}
                     </div>
                 </div>
             </div>
