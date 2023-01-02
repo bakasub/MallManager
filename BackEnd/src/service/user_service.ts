@@ -7,7 +7,6 @@ export class UserService{
     constructor() {
         this.userRepository = AppDataSource.getRepository(User);
     }
-
     findAll = async ()=>{
         let users = await this.userRepository.find();
         return users

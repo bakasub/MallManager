@@ -4,7 +4,8 @@ import {login, register} from "../../services/userService";
 
 const initialState = {
     currentUser: {
-        userName: localStorage.getItem('userName')
+        userName: localStorage.getItem('userName'),
+        token: localStorage.getItem('token')
     }
 }
 const userSlice = createSlice({
@@ -14,6 +15,7 @@ const userSlice = createSlice({
         builder.addCase(login.fulfilled, (state, action) => {
             state.currentUser = action.payload
             localStorage.setItem("userName", action.payload.userName)
+            localStorage.setItem("token",action.payload.token)
         });
         builder.addCase(register.fulfilled, (state, action) => {
             // console.log(action.payload, 're')

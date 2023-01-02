@@ -73,7 +73,7 @@ function Navbar() {
             <div className="row">
                 <div className='col-12'>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <Link className="navbar-brand" to={'/Home'}>Logo</Link>
+                        <Link className="navbar-brand" to={'/home'}>Logo</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false"

@@ -23,6 +23,7 @@ export class ProductController{
     }
 
     edit = async  (req:Request,res:Response)=>{
+        console.log(req.body,'abccccccccc')
         let products =  await this.productService.edit(req.params.product_id,req.body);
         return res.status(200).json(products);
     }

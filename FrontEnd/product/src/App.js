@@ -38,10 +38,11 @@ function App() {
                             <Route path={'cart'} element={<CartProduct/>}></Route>
                              </>
                             :
-                            <Route path="*" element={<ListProduct/>}/>
+                            <Route path="*" element={<LoginPage/>}/>
                         }
 
                     </Route>
+
                 </Routes>
             </div>
         </>

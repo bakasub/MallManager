@@ -19,6 +19,7 @@ class ProductController {
             return res.status(200).json(products);
         };
         this.edit = async (req, res) => {
+            console.log(req.body, 'abccccccccc');
             let products = await this.productService.edit(req.params.product_id, req.body);
             return res.status(200).json(products);
         };

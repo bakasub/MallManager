@@ -13,10 +13,8 @@ function EditProduct() {
     const {product_id} = useParams();
     const navigate = useNavigate();
     const product = useSelector(state => {
-
         return state.product.products;
     })
-    console.log(product)
     const [submitting, setSubmitting] = useState(false)
     const handleEdit = async (values) => {
         let data = {
@@ -25,7 +23,7 @@ function EditProduct() {
             url: img
         }
         await dispatch(updateProducts(data))
-        await navigate('/home')
+        await navigate('/admin')
     }
     const [imageUrls, setImageUrls] = useState([]);
     const [img, setImg] = useState("");

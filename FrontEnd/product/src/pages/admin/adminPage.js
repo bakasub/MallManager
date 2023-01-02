@@ -8,7 +8,6 @@ function AdminPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const products = useSelector(state => {
-        console.log(state, 'productlist')
         return state.product.products;
     })
     console.log(products, 'productssssss')

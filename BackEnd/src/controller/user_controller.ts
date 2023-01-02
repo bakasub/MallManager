@@ -10,6 +10,9 @@ export class UserController {
         this.userService = new UserService()
     }
 
+    tokenLife = (days) => {
+        return days * 24 * 60 * 60 * 1000
+    }
     register = async (req: Request, res: Response) => {
         let user = req.body;
         let userFind = await this.userService.login(user.username);
@@ -45,10 +48,9 @@ export class UserController {
                 }
 
                 let secret = 'vu'
-                let token = await jwt.sign(payload, secret, {
-                    expiresIn: 36000
+                let token = jwt.sign(payload, secret, {
+                    expiresIn: this.tokenLife(7)
                 });
-                console.log(userFind[0])
                 return res.status(200).json({
                     token: token,
                     user_id: userFind[0].user_id,
