@@ -1,60 +1,59 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, Outlet, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {login} from "../services/userService";
 import {Field, Form, Formik} from "formik";
-import "./loginPage.css"
-
 
 function LoginPage() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(state => {
-        console.log(state.user.currentUser, 'abcccc')
+        // console.log(state.user.currentUser,'abcccc')
         return state.user.currentUser
     })
-    // const check = user.message;
     const handleLogin = async (values) => {
-        await dispatch(login(values))
-        if (values.username === user.userName) {
-            navigate('/Home')
-        }
-            // if (user.token !== undefined){
-            //     navigate('/Home')
-        // }
-        else {
-            await alert(user.message)
+        let result = await dispatch(login(values))
+        let message = result.payload.message
+        if (user.userName == "admin") {
+            navigate("/admin")
+        } else if (message == "success" && user.userName != "admin") {
+            navigate("/Home")
+        } else {
+            alert(message)
         }
     }
     return (
-        <div className="loginBox">
-            <div className="row text-center padding">
-                <div className="offset-3 col-6">
-                    <h1 style={{textAlign: "center"}}>Page Login</h1>
-                    <Formik initialValues={{username: '', password: ''}} onSubmit={(values) => {
-                        handleLogin(values)
-                    }}>
-                        <Form>
-                            <div className="group">
-                                <label htmlFor="exampleInputEmail1">Username</label>
-                                <Field type={'text'} name={'username'} className={'form-control'}/>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Password</label>
-                                <Field type={'password'} name={'password'} className={'form-control'}/>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-primary btn-lg" type="submit">Submit
-                                </button>
-                                <button type="button" class="btn btn-primary btn-lg" type="submit">
-                                    <Link to={'register'}>Register</Link>
-                                </button>
-                            </div>
-                        </Form>
-                    </Formik>
-                </div>
-            </div>
+        <div style={{
+            width: '100%',
+            height: '100vh',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+
+        }}>
+            <Formik initialValues={{username: '', password: ''}} onSubmit={(values) => {
+                handleLogin(values)
+            }}>
+                <Form id="form-login">
+                    <h1 className="form-heading">Login</h1>
+                    <div className="form-group">
+                        <i className="far fa-user"></i>
+                        <Field type="text" className="form-input" name={"username"} placeholder="Username"></Field>
+                    </div>
+                    <div className="form-group">
+                        <i className="fas fa-key"></i>
+                        <Field type="password" className="form-input" name={"password"} placeholder="Password"></Field>
+                        <div id="eye">
+                            <i className="far fa-eye"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <Link to={'register'}>
+                        <button type="button" className="btn btn-primary">Register</button>
+                    </Link>
+                </Form>
+            </Formik>
         </div>
     );
 }

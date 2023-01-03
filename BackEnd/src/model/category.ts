@@ -1,11 +1,11 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
-@Entity()
+@Entity({name: 'category'})
 export class Category {
-    @PrimaryGeneratedColumn({type: "int"})
-    public readonly id: number
-    @Column({type: "varchar"})
-    public name: string
-    @Column({type: "varchar"})
-    public image: string
+    @PrimaryGeneratedColumn({type: 'int'})
+    public readonly category_id: number
+    @Column({type: 'varchar'})
+    public category_name: string
+    @Column({type: 'text'})
+    public url: string
 }
