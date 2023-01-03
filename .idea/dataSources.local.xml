@@ -14,6 +14,7 @@
           <node kind="schema">
             <name qname="@" />
             <name qname="mall_db" />
+            <name qname="product" />
           </node>
         </introspection-scope>
       </schema-mapping>
