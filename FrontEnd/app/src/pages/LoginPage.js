@@ -14,13 +14,13 @@ function LoginPage() {
     })
     const handleLogin = async (values) => {
         let result = await dispatch(login(values))
-        let message = result.payload.message
-        if (user.userName == "admin") {
-            navigate("/admin")
-        } else if (message == "success" && user.userName != "admin") {
-            navigate("/Home")
+        let users = result.payload
+        if (users.message === "success" && users.userName === "admin") {
+            navigate("admin")
+        } else if (users.userName !== "admin") {
+            navigate("home")
         } else {
-            alert(message)
+            alert(users.message)
         }
     }
     return (

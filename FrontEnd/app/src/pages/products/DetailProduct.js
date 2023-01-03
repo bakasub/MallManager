@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, Outlet, useNavigate, useParams} from "react-router-dom";
 import {deleteProducts, getProducts} from "../../services/productService";
 
 
-function DetailBlog() {
+function DetailProduct() {
     const dispatch = useDispatch();
     const products = useSelector(state => {
         console.log(state)
@@ -47,32 +47,34 @@ function DetailBlog() {
             <div className="container-fluid padding">
                 <div className="row text-center padding">
                     {products.map((itemB, index) => {
-                        if (user.user_id == 1 && itemB.product_id == product_id) return (
-                            <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
-                                <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
-                                <h3>{itemB.product_name}</h3>
-                                <p>Price: {itemB.price}</p>
-                                <p>Quantity: {itemB.quantity}</p>
-                                <button>Edit</button>
-                                <button onClick={() => {
-                                    dispatch(deleteProducts(product_id))
-                                    naviGate('/home')
-                                }}>Delete
-                                </button>
-                            </div>
+                        console.log(user, 'userrrr')
+                        if (user.userName !== null && itemB.product_id == product_id) return (
+                            <>
+                                <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
+                                    <img src={itemB.url} style={{width: 350, height: 350, objectFit: "cover"}}></img>
+                                    <h3>{itemB.product_name}</h3>
+                                    <div className="btn-groups">
+                                        <Link to={'/Home/cart'}>
+                                            <button type="button" className="add-cart-btn"><i
+                                                className="fas fa-shopping-cart"></i>Add to cart
+                                            </button>
+                                        </Link>
+                                        <button type="button" className="buy-now-btn"><i className="fas fa-wallet"></i>Buy
+                                            now
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="col-6"
+                                     style={{textAlign: "left", border: "solid 2px", borderRadius: "10px",}}>
+                                    <h4>{itemB.name_product}</h4><br/>
+                                    <p>Price: {itemB.price}</p>
+                                    <p>Left in storage: {itemB.quantity} </p>
+                                    <p>About this product</p>
+                                    <p>{itemB.description}</p>
+                                </div>
+                            </>
                         )
-                        if (user.userName !== undefined && itemB.product_id == product_id) return (
-                            <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
-                                <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
-                                <h3>{itemB.product_name}</h3>
-                                <p>Price: {itemB.price}</p>
-                                <p>Quantity: {itemB.quantity}</p>
-                                <Link to={'/Home/cart'}>
-                                    <button>Mua Hàng</button>
-                                </Link>
-                            </div>
-                        )
-                        if (itemB.status === 1 && itemB.product_id == product_id)
+                        if (itemB.product_id == product_id)
                             return (
                                 <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
                                     <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
@@ -91,4 +93,4 @@ function DetailBlog() {
     );
 }
 
-export default DetailBlog;
+export default DetailProduct;

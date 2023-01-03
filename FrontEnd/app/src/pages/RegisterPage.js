@@ -87,10 +87,12 @@ function RegisterPage() {
                     <div>
                         {message}
                     </div>
-                    <button type="submit">Submit</button>
-                    <button type="button" className="ml-3">
-                        <Link to={'/'}>Login</Link>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <Link to={'/'}>
+                    <button type="button" class="btn btn-primary">
+                        Login
                     </button>
+                    </Link>
                 </Form>
             </Formik>
         </div>

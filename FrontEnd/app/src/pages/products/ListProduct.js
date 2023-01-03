@@ -6,15 +6,15 @@ import {getProducts} from "../../services/productService";
 function ListProduct() {
     const dispatch = useDispatch();
     const products = useSelector(state => {
-        console.log(state,'productlist')
+        console.log(state, 'productlist')
         return state.product.products;
     })
+    console.log(products, 'productssssss')
     useEffect(() => {
         dispatch(getProducts());
     }, [])
     return (
         <>
-
             <div id="slides" className="carousel slide" data-ride="carousel">
                 <ul className="carousel-indicators ">
                     <li data-target="#slides" data-slide-to="0" className="active"></li>
@@ -36,13 +36,8 @@ function ListProduct() {
                         <img
                             src="https://images.fpt.shop/unsafe/fit-in/1190x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/12/14/638066534298706298_F-H6_1190x300.png"></img>
                     </div>
+
                     <div className="carousel-caption">
-                        {/*<h1 className="display-2">Example</h1>*/}
-                        {/*<h3>Autolayout with Boostrap</h3>*/}
-                        {/*<button type="button" className="btn btn-outline-light btn-lg">*/}
-                        {/*    VIEW TUTORIALS*/}
-                        {/*</button>*/}
-                        {/*<button type="button" className="btn btn-primary btn-lg">Get Started</button>*/}
                     </div>
                 </div>
             </div>
@@ -50,18 +45,23 @@ function ListProduct() {
             <div className="container-fluid padding">
                 <div className="row text-center padding">
                     {products.map((item, index) => {
-                        console.log(item,'itemBBBBB')
-                        if (item.status === 1){
-                            return (
-                                <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
-                                    <img src={item.url} style={{width:300, height:300 ,objectFit:"cover"}}></img>
-                                    <Link to={`detail/${item.product_id}`}><h3> {item.name_product}</h3></Link>
-                                    <p>Price: {item.price}</p>
-                                    <p>Quantity: {item.quantity}</p>
-                                    <p>Description: {item.description}</p>
-                                </div>
-                            )
-                        } else return <></>
+                        let status = ''
+                        if (item.quantity > 0) {
+                            status = 'Available'
+                        } else {
+                            status = 'Unavailable'
+                        }
+                        return (
+                            <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3" style={{border:"solid 1px",
+                                boxSizing: "border-box",borderRadius:"20px",paddingTop:"10px",boxShadow:"0 14px 28px rgba(0,0,0,0.25), 0 10px 10px (0,0,0,0.22)",background:"#f2f2f2"}}>
+                                <Link to={`detail/${item.product_id}`}>
+                                    <img src={item.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
+                                    <h3> {item.name_product}</h3>
+                                </Link>
+                                <h5>Price: {item.price}</h5>
+                                <h5>Item status: {status}</h5>
+                            </div>
+                        )
                     })
                     }
                 </div>
@@ -69,4 +69,5 @@ function ListProduct() {
         </>
     );
 }
+
 export default ListProduct;
