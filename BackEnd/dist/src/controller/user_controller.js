@@ -9,6 +9,9 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 class UserController {
     constructor() {
+        this.tokenLife = (days) => {
+            return days * 24 * 60 * 60 * 1000;
+        };
         this.register = async (req, res) => {
             let user = req.body;
             let userFind = await this.userService.login(user.username);
@@ -44,10 +47,9 @@ class UserController {
                         username: userFind[0].username
                     };
                     let secret = 'vu';
-                    let token = await jsonwebtoken_1.default.sign(payload, secret, {
-                        expiresIn: 36000
+                    let token = jsonwebtoken_1.default.sign(payload, secret, {
+                        expiresIn: this.tokenLife(7)
                     });
-                    console.log(userFind[0]);
                     return res.status(200).json({
                         token: token,
                         user_id: userFind[0].user_id,

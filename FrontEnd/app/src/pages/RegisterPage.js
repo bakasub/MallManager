@@ -37,23 +37,12 @@ function RegisterPage() {
                 navigate('/')
             }
         }
-        // else {
-        //     alert(message)
-        //     navigate('/')
-        //
-        // }
-
-        // if (user.data.message === 'Tài khoản đã tồn tại!!!') {
-        //     // alert(user);
-        //     navigate('')
-        // }
-
     }
     return (
         <div style={{
             width: '100%',
             height: '100vh',
-            backgroundImage: 'url(https://top10quangbinh.vn/wp-content/uploads/2022/10/anh-gai-xinh-che-mat-24.jpg)',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80)',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
 
@@ -107,6 +96,5 @@ function RegisterPage() {
         </div>
     );
 }
-
 export default RegisterPage;
 

@@ -21,7 +21,7 @@ function AddProduct() {
             url: img
         }
         await dispatch(addProducts(data))
-        await navigate('/home')
+        await navigate('/admin')
     }
     const [imageUrls, setImageUrls] = useState([]);
     const [img, setImg] = useState("");

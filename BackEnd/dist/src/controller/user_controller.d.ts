@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 export declare class UserController {
     private userService;
     constructor();
+    tokenLife: (days: any) => number;
     register: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     login: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     finByName: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
