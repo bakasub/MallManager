@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {addProducts, deleteProducts, findProducts, getProducts} from "../../services/productService";
+import {addProducts, deleteProducts, findProducts, getProducts, updateProducts} from "../../services/productService";
 
 const initialState = {
     products: []
@@ -10,11 +10,11 @@ const productSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(getProducts.fulfilled, (state, action) => {
-            console.log(action, 'accccc')
+            // console.log(action, 'accccc')
             state.products = action.payload.data
         });
         builder.addCase(addProducts.fulfilled, (state, action) => {
-            console.log(action.payload, 'productSlice')
+            // console.log(action.payload, 'productSlice')
             state.products.push(action.payload)
         });
         builder.addCase(deleteProducts.fulfilled, (state, action) => {
@@ -22,7 +22,8 @@ const productSlice = createSlice({
         });
         builder.addCase(findProducts.fulfilled, (state, action) => {
             state.products = [...action.payload.data]
-            console.log('state.products', action.payload)
+        });
+        builder.addCase(updateProducts.fulfilled, (state, action) => {
         })
     }
 })

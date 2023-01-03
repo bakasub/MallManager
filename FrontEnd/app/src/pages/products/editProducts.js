@@ -1,27 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import {Field, Form, Formik} from "formik";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {storage} from "../../fireBase";
 import {getDownloadURL, listAll, ref, uploadBytes} from "firebase/storage";
 import {v4} from "uuid";
-import {addProducts} from "../../services/productService";
+import {addProducts, getProducts, updateProducts} from "../../services/productService";
 
-function AddProduct() {
+
+function EditProduct() {
     const dispatch = useDispatch();
+    const {product_id} = useParams();
     const navigate = useNavigate();
-    const users = useSelector(state => {
-        return state.user.currentUser;
+    const product = useSelector(state => {
+
+        return state.product.products;
     })
+    console.log(product)
     const [submitting, setSubmitting] = useState(false)
-    const handleAdd = async (values) => {
+    const handleEdit = async (values) => {
         let data = {
             ...values,
-            user_id: users.user_id,
+            product_id,
             url: img
         }
-        await dispatch(addProducts(data))
-        await navigate('/admin')
+        await dispatch(updateProducts(data))
+        await navigate('/home')
     }
     const [imageUrls, setImageUrls] = useState([]);
     const [img, setImg] = useState("");
@@ -45,19 +49,21 @@ function AddProduct() {
             });
         });
     }, []);
+    const item = product.filter(item => item.product_id == product_id)[0]
     return (
         <div>
-            <h1 style={{textAlign: "center",backgroundColor:"white"}}>Add Products</h1>
+            <h1 style={{textAlign: "center", backgroundColor: "white"}}>Add Products</h1>
             <Formik initialValues={{
-                name_product: '',
-                price: '',
-                quantity: '',
-                description: '',
-                category_id: '',
+                name_product: item.name_product,
+                price: item.price,
+                quantity: item.quantity,
+                description: item.description,
+                category_id: item.category_id,
                 url: imageUrls
             }} onSubmit={(values) => {
-                handleAdd(values);
+                handleEdit(values);
             }}>
+
                 <Form>
                     <div className="group">
                         <label htmlFor="exampleInputEmail1">Name</label>
@@ -93,4 +99,5 @@ function AddProduct() {
         </div>
     );
 }
-export default AddProduct;
+
+export default EditProduct;

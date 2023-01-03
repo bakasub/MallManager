@@ -25,6 +25,8 @@ export class ProductService{
         return products
     }
     edit = async (product_id,product)=>{
+        // let product_id= +req.params.product_id;
+        // let product = req.body;
         let products= await this.productRepository.update(product_id,product);
         return products
     }
