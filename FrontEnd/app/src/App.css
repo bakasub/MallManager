@@ -43,7 +43,7 @@ html,body{
   height: 100%;
   font-family: 'Open Sans';
   font-size: 20px;
-  color:crimson;
+  color: #000000;
 }
 .navbar{
   background-color:white;
@@ -221,4 +221,62 @@ body{
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+.add-cart-btn{
+  background-color: #FF9F00;
+  border: 2px solid #FF9F00;
+  margin-right: 8px;
+}
+
+.add-cart-btn:hover{
+  background-color: #fff;
+  color: #FF9F00;
+}
+
+.buy-now-btn{
+  background-color: #000000;
+  border: 2px solid #000;
+}
+
+.buy-now-btn:hover{
+  background-color: #fff;
+  color: #000;
+}
+
+.btn-groups{
+  margin-top: 22px;
+}
+.btn-groups button{
+  display: inline-block;
+  font-size: 16px;
+  font-family: inherit;
+  text-transform: uppercase;
+  padding: 15px 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-groups button .fas{
+  margin-right: 8px;
+}
+
+.btn-primary {
+  background-color: rgb(66, 144, 225);
+  border: 1px solid white;
+  height: 45px;
+  left: 45%;
+}
+
+.btn-primary:hover {
+  background-color: rgb(77, 75, 75);
+  border: 1px solid white;
+}
+
+.btn-outline-success {
+  background-color: #ffffff;
+}
+
+.btn-outline-success:hover {
+  background-color: rgb(250, 26, 8)
 }

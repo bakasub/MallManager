@@ -54,7 +54,7 @@ function DetailProduct() {
                                 <h3>{itemB.product_name}</h3>
                                 <p>Price: {itemB.price}</p>
                                 <p>Quantity: {itemB.quantity}</p>
-                                <Link to={'/home/cart'}>
+                                <Link to={`/home/cart/${itemB.product_id}`}>
                                     <button>Mua Hàng</button>
                                 </Link>
                             </div>

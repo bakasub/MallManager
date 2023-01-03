@@ -22,9 +22,11 @@ function AdminPage() {
                     <tr>
                         <th scope="col">STT</th>
                         <th scope="col">NameProduct</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Action</th>
 
                     </tr>
 
@@ -33,6 +35,7 @@ function AdminPage() {
                                 <tr>
                                     <th scope="row">{index + 1}</th>
                                     <td>{item.name_product}</td>
+                                    <td><img src={item.url} style={{width: 50, height: 50, objectFit: "cover"}}></img></td>
                                     <td>{item.price}</td>
                                     <td>{item.quantity}</td>
                                     <td>{item.description}</td>

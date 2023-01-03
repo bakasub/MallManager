@@ -2,24 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {findProducts} from "../services/productService";
+import {AmazonOutlined} from '@ant-design/icons/lib/icons'
 
 
 function Navbar() {
     const dispatch = useDispatch();
     const userName = useSelector(state => {
-        console.log(state,'hello dsadcascasc')
         return state.user.currentUser;
     })
-    console.log("Hello",userName)
-
     const [find,setFind] = useState()
-    console.log(userName.userName,'abccascsac')
     if (userName.userName ==='admin'){
         return (
             <div className="row">
                 <div className='col-12'>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <Link className="navbar-brand" to={'/admin'}>Logo</Link>
+                        <Link className="navbar-brand" to={'/admin'}><AmazonOutlined /></Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false"
@@ -45,7 +42,7 @@ function Navbar() {
                                 value= {name_product: find}
                                 dispatch(findProducts(value))
                             }
-                            } className="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+                            } className=" my-2 my-sm-0" type="submit">Search
                             </button>
                             <div>
                                 <div className="nav-item dropdown  mr-5">

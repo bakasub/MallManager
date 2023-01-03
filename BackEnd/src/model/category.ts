@@ -7,5 +7,5 @@ export class Category {
     @Column({type: 'varchar'})
     public category_name: string
     @Column({type: 'text'})
-    public url: string
+    public urlCategory: string
 }

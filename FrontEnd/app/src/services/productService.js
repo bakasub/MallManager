@@ -32,13 +32,7 @@ export const findProducts = createAsyncThunk(
 export const updateProducts = createAsyncThunk(
     'products/updateProducts',
     async (data) => {
-        // const token = JSON.parse(localStorage.getItem('token'))
         const res = await axios.put(`http://localhost:8080/products/${data.product_id}`, data
-        //     ,{
-        //     headers: {
-        //         'Authorization': "Bearer " + token
-        //     }
-        // }
         )
 
         return res

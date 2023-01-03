@@ -47,7 +47,8 @@ function ListProduct() {
                     {products.map((item, index) => {
                         console.log(item, 'itemBBBBB')
                         return (
-                            <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
+                            <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3" style={{
+                                boxSizing: "border-box",borderRadius:"5px",paddingTop:"10px",boxShadow:"0 14px 28px rgba(0,0,0,0.25), 0 10px 10px (0,0,0,0.22)",background:"#f2f2f2"}}>
                                 <img src={item.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
                                 <Link to={`detail/${item.product_id}`}><h3> {item.name_product}</h3></Link>
                                 <p>Price: {item.price}</p>

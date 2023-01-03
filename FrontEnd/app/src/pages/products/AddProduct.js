@@ -75,9 +75,13 @@ function AddProduct() {
                         <label htmlFor="exampleInputPassword1">Description</label>
                         <Field type={'text'} name={'description'} className={'form-control'}/>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Category</label>
-                        <Field type={'number'} name={'category_id'} className={'form-control'}/>
+                    <div>
+                        <Field as="select" name="category_id">
+                            <option disabled value="">Pick a winner</option>
+                            <option value='1'>Iphone</option>
+                            <option value='2'>SamSung</option>
+                            <option value='3'>Oppo</option>
+                        </Field>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1">Image</label>
@@ -87,7 +91,10 @@ function AddProduct() {
                             uploadFile(event.target.files[0])
                         }}/>
                     </div>
-                    <button type="submit" disabled={submitting}>Submit</button>
+                    <button type={onclick} disabled={submitting}>Submit</button>
+                    <button type={onclick} style={{color:"red"}}>
+                        <Link to={'/admin'}>Back</Link>
+                    </button>
                 </Form>
             </Formik>
         </div>

@@ -24,7 +24,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: 'text' }),
     __metadata("design:type", String)
-], Category.prototype, "url", void 0);
+], Category.prototype, "urlCategory", void 0);
 Category = __decorate([
     (0, typeorm_1.Entity)({ name: 'category' })
 ], Category);

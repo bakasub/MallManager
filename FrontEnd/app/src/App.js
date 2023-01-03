@@ -35,7 +35,7 @@ function App() {
                         <Route path='detail/:product_id' element={<DetailProduct></DetailProduct>}></Route>
                         { (user.userName != null) ?
                             <>
-                            <Route path={'cart'} element={<CartProduct/>}></Route>
+                            <Route path={'cart/:product_id'} element={<CartProduct/>}></Route>
                              </>
                             :
                             <Route path="*" element={<LoginPage/>}/>

@@ -50,7 +50,7 @@ function EditProduct() {
     const item = product.filter(item => item.product_id == product_id)[0]
     return (
         <div>
-            <h1 style={{textAlign: "center", backgroundColor: "white"}}>Add Products</h1>
+            <h1 style={{textAlign: "center", backgroundColor: "white"}}>Edit Products</h1>
             <Formik initialValues={{
                 name_product: item.name_product,
                 price: item.price,
@@ -79,9 +79,13 @@ function EditProduct() {
                         <label htmlFor="exampleInputPassword1">Description</label>
                         <Field type={'text'} name={'description'} className={'form-control'}/>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Category</label>
-                        <Field type={'number'} name={'category_id'} className={'form-control'}/>
+                    <div>
+                        <Field as="select" name="category_id">
+                            <option disabled value="">Pick a winner</option>
+                            <option value='1'>Iphone</option>
+                            <option value='2'>SamSung</option>
+                            <option value='3'>Oppo</option>
+                        </Field>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1">Image</label>
