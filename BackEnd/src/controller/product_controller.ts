@@ -1,11 +1,15 @@
 
 import {Request, Response} from "express";
 import  {ProductService} from "../service/product_service";
+import  {CategoryService} from "../service/category_service";
 
 export class ProductController{
-    private productService: ProductService
+    private productService: ProductService;
+    private categoryService: CategoryService
+
     constructor() {
         this.productService= new ProductService();
+        this.categoryService =new CategoryService();
     }
     getAll = async (req:Request,res:Response)=>{
         let products = await this.productService.findAll();

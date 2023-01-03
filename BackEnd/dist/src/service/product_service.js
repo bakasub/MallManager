@@ -6,7 +6,7 @@ const product_1 = require("../model/product");
 class ProductService {
     constructor() {
         this.findAll = async () => {
-            let products = await this.productRepository.find();
+            let products = await this.productRepository.query(`select * from Products JOIN Category on Products.category_id = Category.category_id`);
             return products;
         };
         this.findByName = async (name_product) => {

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 export declare class ProductController {
     private productService;
+    private categoryService;
     constructor();
     getAll: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     finByName: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;

@@ -59,6 +59,8 @@ function ListProduct() {
                                 <p>Price: {item.price}</p>
                                 <p>Quantity: {item.quantity}</p>
                                 <p>Description: {item.description}</p>
+                                <p>Category: {item.category_name}</p>
+
                             </div>
 
                         )

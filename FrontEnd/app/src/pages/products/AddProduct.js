@@ -54,7 +54,7 @@ function AddProduct() {
                 quantity: '',
                 description: '',
                 category_id: '',
-                url: imageUrls
+                url: imageUrls,
             }} onSubmit={(values) => {
                 handleAdd(values);
             }}>

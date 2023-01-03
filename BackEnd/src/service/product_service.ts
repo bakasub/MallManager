@@ -13,7 +13,7 @@ export class ProductService{
         this.productRepository= AppDataSource.getRepository(Product);
     }
     findAll = async ()=>{
-        let products = await this.productRepository.find();
+        let products = await this.productRepository.query(`select * from Products JOIN Category on Products.category_id = Category.category_id`);
         return products
     }
     findByName = async (name_product)=>{
