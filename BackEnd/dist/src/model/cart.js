@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Cart.prototype, "product_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
+    (0, typeorm_1.Column)({ type: 'int', default: 1 }),
     __metadata("design:type", Number)
 ], Cart.prototype, "quantity", void 0);
 Cart = __decorate([

@@ -50,6 +50,46 @@ class CartService {
                      where user_id = ${input.user_id}`
         await this.cartRepo.query(query)
     }
+
+    decreaseQuantity = async (input) => {
+        let currentQuantity = await this.cartRepo.query(`select quantity
+                                                         from carts
+                                                         where user_id = ${input.user_id}
+                                                           and product_id = ${input.product_id}`)
+        if (currentQuantity[0].quantity == 0) {
+            alert('Cannot lower the amount than 0')
+            return currentQuantity[0].quantity
+        } else {
+        let newQuantity = (currentQuantity[0].quantity - 1)
+        await this.cartRepo.query(`update carts
+                                   set quantity = ${newQuantity}
+                                   where user_id = ${input.user_id}
+                                     and product_id = ${input.product_id}`)
+
+        let result = await this.cartRepo.query(`select *
+                                    from carts
+                                    where user_id = ${input.user_id}
+                                      and product_id = ${input.product_id}`)
+        return result[0].quantity}
+    }
+
+    increaseQuantity = async (input) => {
+        let currentQuantity = await this.cartRepo.query(`select quantity
+                                                         from carts
+                                                         where user_id = ${input.user_id}
+                                                           and product_id = ${input.product_id}`)
+        let newQuantity = (currentQuantity[0].quantity + 1)
+        await this.cartRepo.query(`update carts
+                                   set quantity = ${newQuantity}
+                                   where user_id = ${input.user_id}
+                                     and product_id = ${input.product_id}`)
+
+        let result = await this.cartRepo.query(`select *
+                                    from carts
+                                    where user_id = ${input.user_id}
+                                      and product_id = ${input.product_id}`)
+        return result[0].quantity
+    }
 }
 
 export default new CartService()

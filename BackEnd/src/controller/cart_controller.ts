@@ -25,6 +25,18 @@ class CartController {
         await CartService.removeAllProduct(input)
         return res.status(200).json({message: "Cleared your cart"})
     }
+
+    decreaseQuantity = async (req: Request, res: Response) => {
+        let input = req.body
+        let result = await CartService.decreaseQuantity(input)
+        return res.status(200).json(result)
+    }
+
+    increaseQuantity = async (req: Request, res: Response) => {
+        let input = req.body
+        let result = await CartService.increaseQuantity(input)
+        return res.status(200).json(result)
+    }
 }
 
 export default new CartController
