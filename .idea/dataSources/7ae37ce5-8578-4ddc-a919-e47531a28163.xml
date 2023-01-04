@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.41">
+    <root id="1">
+      <DefaultCasing>mixed/mixed</DefaultCasing>
+      <ServerVersion>8.0.31</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="MD3"/>
+    <schema id="3" parent="1" name="MD3kt"/>
+    <schema id="4" parent="1" name="QuanLySinhVien"/>
+    <schema id="5" parent="1" name="Quanlyydiemthii"/>
+    <schema id="6" parent="1" name="dem_database"/>
+    <schema id="7" parent="1" name="demo"/>
+    <schema id="8" parent="1" name="demo1"/>
+    <schema id="9" parent="1" name="demo2006"/>
+    <schema id="10" parent="1" name="demoModule4"/>
+    <schema id="11" parent="1" name="demo_database"/>
+    <schema id="12" parent="1" name="information_schema"/>
+    <schema id="13" parent="1" name="managerstudent"/>
+    <schema id="14" parent="1" name="mysql"/>
+    <schema id="15" parent="1" name="performance_schema"/>
+    <schema id="16" parent="1" name="productD"/>
+    <schema id="17" parent="1" name="quanlydiemthi"/>
+    <schema id="18" parent="1" name="quanlydiemthii"/>
+    <schema id="19" parent="1" name="schema_name"/>
+    <schema id="20" parent="1" name="sys"/>
+  </database-model>
+</dataSource>

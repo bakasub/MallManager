@@ -87,8 +87,8 @@ function RegisterPage() {
                     <div>
                         {message}
                     </div>
-                    <button type="submit">Submit</button>
-                    <button type="button" className="ml-3">
+                    <button type="submit" className="btn btn-light">Light</button>
+                    <button type="submit" className="ml-3 btn btn-light">
                         <Link to={'/'}>Login</Link>
                     </button>
                 </Form>

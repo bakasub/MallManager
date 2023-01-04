@@ -51,11 +51,11 @@ function Navbar() {
                                         {userName.userName}
                                     </a>
                                     <div className="dropdown-menu">
-                                        <Link className="dropdown-item" to={'/admin'}> Admin</Link>
+                                        <Link className="dropdown-item" to={'/admin'}>Admin</Link>
                                         <div className="dropdown-divider"></div>
                                         <Link onClick={() => {
                                             localStorage.clear()
-                                        }} className="dropdown-item" to={'/'}>Logout</Link>
+                                        }} className="dropdown-item" to={'/'}></Link>
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@ function Navbar() {
                                 value= {name_product: find}
                                 dispatch(findProducts(value))
                             }
-                            } className="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+                            } id="abc" className="btn btn-outline-success my-2 my-sm-0"  type="submit" style={{width:100, height:30}}>
                             </button>
                             <div>
                                 <div className="nav-item dropdown  mr-5">
