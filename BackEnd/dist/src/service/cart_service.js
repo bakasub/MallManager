@@ -27,6 +27,19 @@ class CartService {
                 return "This product is already in your cart";
             }
         };
+        this.removeAProduct = async (input) => {
+            let query = `delete
+                     from carts
+                     where user_id = ${input.user_id}
+                       and product_id = ${input.product_id}`;
+            await this.cartRepo.query(query);
+        };
+        this.removeAllProduct = async (input) => {
+            let query = `delete
+                     from carts
+                     where user_id = ${input.user_id}`;
+            await this.cartRepo.query(query);
+        };
         data_source_1.AppDataSource.initialize().then(async (connection) => {
             console.log('Fetched cart data');
             this.cartRepo = await connection.getRepository(cart_1.Cart);

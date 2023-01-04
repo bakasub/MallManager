@@ -35,6 +35,21 @@ class CartService {
         }
 
     }
+
+    removeAProduct = async (input) => {
+        let query = `delete
+                     from carts
+                     where user_id = ${input.user_id}
+                       and product_id = ${input.product_id}`
+        await this.cartRepo.query(query)
+    }
+
+    removeAllProduct = async (input) => {
+        let query = `delete
+                     from carts
+                     where user_id = ${input.user_id}`
+        await this.cartRepo.query(query)
+    }
 }
 
 export default new CartService()

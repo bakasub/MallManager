@@ -16,6 +16,16 @@ class CartController {
             let result = await cart_service_1.default.addProduct(input);
             return res.status(200).json(result);
         };
+        this.removeAProduct = async (req, res) => {
+            let input = req.body;
+            await cart_service_1.default.removeAProduct(input);
+            return res.status(200).json({ message: "Removed!" });
+        };
+        this.removeAllProduct = async (req, res) => {
+            let input = req.body;
+            await cart_service_1.default.removeAllProduct(input);
+            return res.status(200).json({ message: "Cleared your cart" });
+        };
     }
 }
 exports.default = new CartController;

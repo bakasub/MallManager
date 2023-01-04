@@ -13,6 +13,18 @@ class CartController {
         let result = await CartService.addProduct(input)
         return res.status(200).json(result)
     }
+
+    removeAProduct = async (req:Request, res:Response) => {
+        let input = req.body
+        await CartService.removeAProduct(input)
+        return res.status(200).json({message:"Removed!"})
+    }
+
+    removeAllProduct = async (req: Request, res: Response) => {
+        let input = req.body
+        await CartService.removeAllProduct(input)
+        return res.status(200).json({message: "Cleared your cart"})
+    }
 }
 
 export default new CartController
