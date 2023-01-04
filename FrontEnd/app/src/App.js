@@ -11,6 +11,7 @@ import EditProduct from "./pages/products/editProducts";
 import {useSelector} from "react-redux";
 import AdminPage from "./pages/admin/adminPage";
 
+
 function App() {
     const user = useSelector(state => {
       return state.user.currentUser;
@@ -35,7 +36,7 @@ function App() {
                         <Route path='detail/:product_id' element={<DetailProduct></DetailProduct>}></Route>
                         { (user.userName != null) ?
                             <>
-                            <Route path={'cart/:product_id'} element={<CartProduct/>}></Route>
+                            <Route path={'cart'} element={<CartProduct/>}></Route>
                              </>
                             :
                             <Route path="*" element={<LoginPage/>}/>

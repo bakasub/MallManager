@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {getProducts} from "../../services/productService";
+import CartProduct from "./CartProduct";
 
 function ListProduct() {
     const dispatch = useDispatch();
@@ -13,6 +14,15 @@ function ListProduct() {
     useEffect(() => {
         dispatch(getProducts());
     }, [])
+    // const navigate = useNavigate();
+    // const cart = useSelector((state) => state.cart.cartItems)
+    // const getTotalQuantity = () => {
+    //     let total = 0
+    //     cart.forEach(item => {
+    //         total += item.quantity
+    //     })
+    //     return total
+    // }
     return (
         <>
             <div id="slides" className="carousel slide" data-ride="carousel">
@@ -55,7 +65,6 @@ function ListProduct() {
                                 <p>Quantity: {item.quantity}</p>
                                 <p>Description: {item.description}</p>
                                 <p>Category: {item.category_name}</p>
-
                             </div>
 
                         )

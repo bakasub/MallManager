@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link, Outlet, useNavigate, useParams} from "react-router-dom";
 import {deleteProducts, getProducts} from "../../services/productService";
+import {addToCart} from "../../redux/cart/cartSlice";
 
 
 function DetailProduct() {
@@ -13,7 +14,10 @@ function DetailProduct() {
     const user = useSelector(state => {
         return state.user.currentUser
     })
-    console.log(user.userName,'avvcacacac')
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product));
+    }
+    console.log(user.userName, 'avvcacacac')
     const naviGate = useNavigate();
     const {product_id} = useParams();
     useEffect(() => {
@@ -54,8 +58,8 @@ function DetailProduct() {
                                 <h3>{itemB.product_name}</h3>
                                 <p>Price: {itemB.price}</p>
                                 <p>Quantity: {itemB.quantity}</p>
-                                <Link to={`/home/cart/${itemB.product_id}`}>
-                                    <button>Mua Hàng</button>
+                                <Link to={'/home/cart'}>
+                                    <button onClick={() => handleAddToCart(itemB)}>Add To Cart</button>
                                 </Link>
                             </div>
                         )
@@ -77,4 +81,5 @@ function DetailProduct() {
         </>
     );
 }
+
 export default DetailProduct;
