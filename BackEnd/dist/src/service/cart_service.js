@@ -5,7 +5,7 @@ const cart_1 = require("../model/cart");
 class CartService {
     constructor() {
         this.getAnUserCart = async (id) => {
-            let query = `select *
+            let query = `select p.name_product, c.quantity, p.price, p.url
                      from carts as c
                               join products p on c.product_id = p.product_id
                               join users u on c.user_id = u.user_id

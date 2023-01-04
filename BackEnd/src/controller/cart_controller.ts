@@ -3,8 +3,7 @@ import CartService from "../service/cart_service";
 
 class CartController {
     displayAnUserCart = async (req: Request, res: Response) => {
-        let userId = req.params.id
-        console.log(userId)
+        let userId = +req.params.id
         let result = await CartService.getAnUserCart(userId)
         return res.status(200).json(result)
     }

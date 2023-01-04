@@ -7,8 +7,7 @@ const cart_service_1 = __importDefault(require("../service/cart_service"));
 class CartController {
     constructor() {
         this.displayAnUserCart = async (req, res) => {
-            let userId = req.params.id;
-            console.log(userId);
+            let userId = +req.params.id;
             let result = await cart_service_1.default.getAnUserCart(userId);
             return res.status(200).json(result);
         };
