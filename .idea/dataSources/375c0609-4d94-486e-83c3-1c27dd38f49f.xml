@@ -1009,438 +1009,332 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <schema id="292" parent="1" name="information_schema">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
-    <schema id="293" parent="1" name="mall_db">
+    <schema id="293" parent="1" name="mod3finals">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="294" parent="1" name="mod3finals">
+    <schema id="294" parent="1" name="mysql">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="295" parent="1" name="mysql">
+    <schema id="295" parent="1" name="performance_schema">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="296" parent="1" name="performance_schema">
+    <schema id="296" parent="1" name="product">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="297" parent="1" name="product">
+    <schema id="297" parent="1" name="sakila">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="298" parent="1" name="sakila">
+    <schema id="298" parent="1" name="sys">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="299" parent="1" name="sys">
+    <schema id="299" parent="1" name="world">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="300" parent="1" name="world">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <user id="301" parent="1" name="mysql.infoschema">
+    <user id="300" parent="1" name="mysql.infoschema">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="302" parent="1" name="mysql.session">
+    <user id="301" parent="1" name="mysql.session">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="303" parent="1" name="mysql.sys">
+    <user id="302" parent="1" name="mysql.sys">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="304" parent="1" name="root">
+    <user id="303" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="305" parent="288" name="persons">
+    <table id="304" parent="288" name="persons">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="306" parent="288" name="posts">
+    <table id="305" parent="288" name="posts">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="307" parent="288" name="users">
+    <table id="306" parent="288" name="users">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="308" parent="293" name="category">
+    <table id="307" parent="296" name="carts">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="309" parent="293" name="products">
+    <table id="308" parent="296" name="category">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="310" parent="293" name="users">
+    <table id="309" parent="296" name="products">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="311" parent="297" name="category">
+    <table id="310" parent="296" name="users">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="312" parent="297" name="products">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </table>
-    <table id="313" parent="297" name="users">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </table>
-    <column id="314" parent="305" name="id">
+    <column id="311" parent="304" name="id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="315" parent="305" name="name">
+    <column id="312" parent="304" name="name">
       <DataType>varchar(20)|0s</DataType>
       <Position>2</Position>
     </column>
-    <index id="316" parent="305" name="PRIMARY">
+    <index id="313" parent="304" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="317" parent="305" name="PRIMARY">
+    <key id="314" parent="304" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="318" parent="306" name="id">
+    <column id="315" parent="305" name="id">
       <AutoIncrement>2</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="319" parent="306" name="title">
+    <column id="316" parent="305" name="title">
       <DataType>varchar(255)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="320" parent="306" name="content">
+    <column id="317" parent="305" name="content">
       <DataType>varchar(1000)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="321" parent="306" name="date">
+    <column id="318" parent="305" name="date">
       <DataType>datetime|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="322" parent="306" name="userId">
+    <column id="319" parent="305" name="userId">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <foreign-key id="323" parent="306" name="posts_ibfk_1">
+    <foreign-key id="320" parent="305" name="posts_ibfk_1">
       <ColNames>userId</ColNames>
       <RefColNames>userId</RefColNames>
       <RefTableName>users</RefTableName>
     </foreign-key>
-    <index id="324" parent="306" name="PRIMARY">
+    <index id="321" parent="305" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="325" parent="306" name="userId">
+    <index id="322" parent="305" name="userId">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="326" parent="306" name="PRIMARY">
+    <key id="323" parent="305" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="327" parent="307" name="userId">
+    <column id="324" parent="306" name="userId">
       <AutoIncrement>2</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="328" parent="307" name="username">
+    <column id="325" parent="306" name="username">
       <DataType>varchar(15)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="329" parent="307" name="password">
+    <column id="326" parent="306" name="password">
       <DataType>varchar(8)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="330" parent="307" name="email">
+    <column id="327" parent="306" name="email">
       <DataType>varchar(40)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="331" parent="307" name="status">
+    <column id="328" parent="306" name="status">
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="332" parent="307" name="fullName">
+    <column id="329" parent="306" name="fullName">
       <DataType>varchar(50)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="333" parent="307" name="address">
+    <column id="330" parent="306" name="address">
       <DataType>varchar(50)|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="334" parent="307" name="phoneNumber">
+    <column id="331" parent="306" name="phoneNumber">
       <DataType>int|0s</DataType>
       <Position>8</Position>
     </column>
-    <index id="335" parent="307" name="PRIMARY">
+    <index id="332" parent="306" name="PRIMARY">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="336" parent="307" name="PRIMARY">
+    <key id="333" parent="306" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="337" parent="308" name="category_id">
+    <column id="334" parent="307" name="index">
       <AutoIncrement>1</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="338" parent="308" name="category_name">
+    <column id="335" parent="307" name="user_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="336" parent="307" name="product_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="337" parent="307" name="quantity">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <index id="338" parent="307" name="PRIMARY">
+      <ColNames>index</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="339" parent="307" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="340" parent="308" name="category_id">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="341" parent="308" name="category_name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="339" parent="308" name="url">
+    <column id="342" parent="308" name="url">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <index id="340" parent="308" name="PRIMARY">
+    <index id="343" parent="308" name="PRIMARY">
       <ColNames>category_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="341" parent="308" name="PRIMARY">
+    <key id="344" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="342" parent="309" name="product_id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="345" parent="309" name="product_id">
+      <AutoIncrement>4</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="343" parent="309" name="user_id">
+    <column id="346" parent="309" name="user_id">
       <DataType>int|0s</DataType>
       <DefaultExpression>1</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="344" parent="309" name="name_product">
+    <column id="347" parent="309" name="name_product">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="345" parent="309" name="price">
+    <column id="348" parent="309" name="price">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="346" parent="309" name="quantity">
+    <column id="349" parent="309" name="quantity">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="347" parent="309" name="url">
+    <column id="350" parent="309" name="url">
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="348" parent="309" name="description">
+    <column id="351" parent="309" name="description">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="349" parent="309" name="category_id">
+    <column id="352" parent="309" name="category_id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <index id="350" parent="309" name="PRIMARY">
+    <index id="353" parent="309" name="PRIMARY">
       <ColNames>product_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="351" parent="309" name="PRIMARY">
+    <key id="354" parent="309" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="352" parent="310" name="user_id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="355" parent="310" name="user_id">
+      <AutoIncrement>4</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="353" parent="310" name="username">
+    <column id="356" parent="310" name="username">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="354" parent="310" name="password">
+    <column id="357" parent="310" name="password">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="355" parent="310" name="phone">
+    <column id="358" parent="310" name="phone">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="356" parent="310" name="email">
+    <column id="359" parent="310" name="email">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="357" parent="310" name="address">
+    <column id="360" parent="310" name="address">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="358" parent="310" name="role">
+    <column id="361" parent="310" name="role">
       <DataType>int|0s</DataType>
       <DefaultExpression>1</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <index id="359" parent="310" name="PRIMARY">
+    <index id="362" parent="310" name="PRIMARY">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="360" parent="310" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="361" parent="311" name="category_id">
-      <AutoIncrement>1</AutoIncrement>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="362" parent="311" name="category_name">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="363" parent="311" name="url">
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <index id="364" parent="311" name="PRIMARY">
-      <ColNames>category_id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="365" parent="311" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="366" parent="312" name="product_id">
-      <AutoIncrement>1</AutoIncrement>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="367" parent="312" name="user_id">
-      <DataType>int|0s</DataType>
-      <DefaultExpression>1</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="368" parent="312" name="name_product">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="369" parent="312" name="price">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-    </column>
-    <column id="370" parent="312" name="quantity">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-    </column>
-    <column id="371" parent="312" name="url">
-      <DataType>varchar(255)|0s</DataType>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-    </column>
-    <column id="372" parent="312" name="description">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-    </column>
-    <column id="373" parent="312" name="category_id">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>8</Position>
-    </column>
-    <index id="374" parent="312" name="PRIMARY">
-      <ColNames>product_id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="375" parent="312" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="376" parent="313" name="user_id">
-      <AutoIncrement>1</AutoIncrement>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="377" parent="313" name="username">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="378" parent="313" name="password">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="379" parent="313" name="phone">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-    </column>
-    <column id="380" parent="313" name="email">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-    </column>
-    <column id="381" parent="313" name="address">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-    </column>
-    <column id="382" parent="313" name="role">
-      <DataType>int|0s</DataType>
-      <DefaultExpression>1</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-    </column>
-    <index id="383" parent="313" name="PRIMARY">
-      <ColNames>user_id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="384" parent="313" name="PRIMARY">
+    <key id="363" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

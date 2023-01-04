@@ -45,7 +45,7 @@ export class UserController {
                 }
 
                 let secret = 'vu'
-                let token = await jwt.sign(payload, secret, {
+                let token = jwt.sign(payload, secret, {
                     expiresIn: 36000
                 });
                 console.log(userFind[0])

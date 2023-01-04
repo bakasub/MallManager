@@ -44,7 +44,7 @@ class UserController {
                         username: userFind[0].username
                     };
                     let secret = 'vu';
-                    let token = await jsonwebtoken_1.default.sign(payload, secret, {
+                    let token = jsonwebtoken_1.default.sign(payload, secret, {
                         expiresIn: 36000
                     });
                     console.log(userFind[0]);

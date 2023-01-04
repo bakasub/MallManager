@@ -49,7 +49,7 @@ html,body{
   background-color:white;
   z-index: 15;
   min-width: 100vw;
-  position: fixed;
+
 }
 a:hover{
   color: white !important;
