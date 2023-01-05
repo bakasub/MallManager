@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link, Outlet, useNavigate, useParams} from "react-router-dom";
 import {deleteProducts, getProducts} from "../../services/productService";
-import {addToCart} from "../../redux/cart/cartSlice";
+import {addProductToCart, getCart} from "../../services/cartService";
+import {getTotals} from "../../redux/cart/cartSlice";
 
 
 function DetailProduct() {
@@ -14,15 +15,13 @@ function DetailProduct() {
     const user = useSelector(state => {
         return state.user.currentUser
     })
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product));
+    const handleAddToCart =async (product) => {
+
+        await dispatch(addProductToCart({...product, user_id: user.user_id}));
+      await  dispatch(getCart(user.user_id))
+        await dispatch(getTotals());
     }
-    console.log(user.userName, 'avvcacacac')
-    const naviGate = useNavigate();
     const {product_id} = useParams();
-    useEffect(() => {
-        dispatch(getProducts());
-    }, [])
     return (
         <>
             <div id="slides" className="carousel slide" data-ride="carousel">
@@ -58,7 +57,7 @@ function DetailProduct() {
                                 <h3>{itemB.product_name}</h3>
                                 <p>Price: {itemB.price}</p>
                                 <p>Quantity: {itemB.quantity}</p>
-                                <Link to={'/home/cart'}>
+                                <Link to={`/home`}>
                                     <button onClick={() => handleAddToCart(itemB)}>Add To Cart</button>
                                 </Link>
                             </div>

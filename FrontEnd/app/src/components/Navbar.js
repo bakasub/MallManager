@@ -3,13 +3,21 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {findProducts} from "../services/productService";
 import {AmazonOutlined} from '@ant-design/icons/lib/icons'
+import {addProductToCart, getCart} from "../services/cartService";
 
 
 function Navbar() {
     const dispatch = useDispatch();
     const userName = useSelector(state => {
         return state.user.currentUser;
-    })
+    });
+    const cartTotalQuantity = useSelector( state =>{
+        console.log("totalquantity",state.cart)
+        return state.cart
+    });
+    const handleGetCart = () => {
+        dispatch(getCart(userName.user_id));
+    }
     const [find,setFind] = useState()
     if (userName.userName ==='admin'){
         return (
@@ -100,7 +108,9 @@ function Navbar() {
                                         {userName.userName}
                                     </a>
                                     <div className="dropdown-menu">
-                                        <Link className="dropdown-item" to={'/Home/cart'}> Cart</Link>
+                                          <Link className="dropdown-item" to={`/home/cart/${userName.user_id}`} onClick={()=>{
+                                              handleGetCart()
+                                          }}> Cart ({cartTotalQuantity.cartTotalQuantity})</Link>
                                         <div className="dropdown-divider"></div>
                                         <Link onClick={() => {
                                             localStorage.clear()
