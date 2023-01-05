@@ -6,6 +6,7 @@ export declare class ProductService {
     add: (product: any) => Promise<any>;
     edit: (product_id: any, product: any) => Promise<any>;
     delete: (productId: number) => Promise<any>;
+    advancedFilter: (input: any) => Promise<any>;
 }
 declare const _default: ProductService;
 export default _default;

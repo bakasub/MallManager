@@ -10,7 +10,9 @@ class ProductService {
             return products;
         };
         this.findByName = async (name_product) => {
-            let products = await this.productRepository.query(`select * from products where name_product like '%${name_product}%'`);
+            let products = await this.productRepository.query(`select *
+                                                           from products
+                                                           where name_product like '%${name_product}%'`);
             return products;
         };
         this.add = async (product) => {
@@ -24,6 +26,39 @@ class ProductService {
         this.delete = async (productId) => {
             let products = await this.productRepository.delete(productId);
             return products;
+        };
+        this.advancedFilter = async (input) => {
+            console.log(input, "input");
+            console.log(isNaN(input.price), isNaN(input.category_id));
+            if (isNaN(input.price) == false && isNaN(input.category_id) == false) {
+                let result = await this.productRepository.query(`select *
+                                                             from products
+                                                             where name_product like '%${input.name_product}%'`);
+                return result;
+            }
+            else if (isNaN(input.price) == false) {
+                let result = await this.productRepository.query(`select *
+                                                             from products
+                                                             where name_product like '%${input.name_product}%'
+                                                               and price = '${input.price}'
+            `);
+                return result;
+            }
+            else if (isNaN(input.category_id) == false) {
+                let result = await this.productRepository.query(`select *
+                                                             from products
+                                                             where name_product like '%${input.name_product}%'
+                                                               and category_id = '${input.category_id}'`);
+                return result;
+            }
+            else {
+                let result = await this.productRepository.query(`select *
+                                                             from products
+                                                             where name_product like '%${input.name_product}%'
+                                                               and price = '${input.price}'
+                                                               and category_id = '${input.category_id}'`);
+                return result;
+            }
         };
         data_source_1.AppDataSource.initialize().then(connection => {
             console.log('Connect Database Success!');

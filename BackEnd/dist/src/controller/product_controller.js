@@ -8,7 +8,7 @@ class ProductController {
             let products = await this.productService.findAll();
             return res.status(200).json(products);
         };
-        this.finByName = async (req, res) => {
+        this.findByName = async (req, res) => {
             let product = req.query;
             let productFind = await this.productService.findByName(product.name_product);
             return res.status(201).json(productFind);
@@ -25,6 +25,18 @@ class ProductController {
         this.delete = async (req, res) => {
             let products = await this.productService.delete(+req.params.product_id);
             return res.status(200).json(products);
+        };
+        this.advancedFilter = async (req, res) => {
+            try {
+                let input = req.body;
+                let result = await this.productService.advancedFilter(input);
+                return res.status(200).json(result);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
         };
         this.productService = new product_service_1.ProductService();
     }
