@@ -9,5 +9,5 @@ export class Cart {
     @Column({type:'int'})
     public product_id: number
     @Column({type:'int',default: 1})
-    public quantity: number
+    public cartQuantity: number
 }

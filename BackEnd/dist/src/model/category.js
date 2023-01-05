@@ -22,9 +22,9 @@ __decorate([
     __metadata("design:type", String)
 ], Category.prototype, "category_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text' }),
+    (0, typeorm_1.Column)({ type: 'varchar', default: '' }),
     __metadata("design:type", String)
-], Category.prototype, "url", void 0);
+], Category.prototype, "url_category", void 0);
 Category = __decorate([
     (0, typeorm_1.Entity)({ name: 'category' })
 ], Category);

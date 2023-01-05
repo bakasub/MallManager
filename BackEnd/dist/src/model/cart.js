@@ -28,7 +28,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: 'int', default: 1 }),
     __metadata("design:type", Number)
-], Cart.prototype, "quantity", void 0);
+], Cart.prototype, "cartQuantity", void 0);
 Cart = __decorate([
     (0, typeorm_1.Entity)({ name: 'carts' })
 ], Cart);

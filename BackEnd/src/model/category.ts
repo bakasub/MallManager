@@ -6,6 +6,7 @@ export class Category {
     public readonly category_id: number
     @Column({type: 'varchar'})
     public category_name: string
-    @Column({type: 'text'})
-    public url: string
+    @Column({type: 'varchar',default: ''})
+    public url_category: string
 }
+
