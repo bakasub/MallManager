@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {findProducts} from "../services/productService";
 import {AmazonOutlined} from '@ant-design/icons/lib/icons'
-import {addProductToCart, getCart} from "../services/cartService";
+import {getCart} from "../services/cartService";
 
 
 function Navbar() {
@@ -12,7 +12,7 @@ function Navbar() {
         return state.user.currentUser;
     });
     const cartTotalQuantity = useSelector( state =>{
-        console.log("totalquantity",state.cart)
+        console.log(state,"stateee")
         return state.cart
     });
     const handleGetCart = () => {

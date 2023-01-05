@@ -3,16 +3,14 @@ import {Cart} from "../model/cart";
 
 class CartService {
     cartRepo: any
-
     constructor() {
         AppDataSource.initialize().then(async connection => {
             console.log('Fetched cart data')
             this.cartRepo = await connection.getRepository(Cart)
         })
     }
-
     getAnUserCart = async (id) => {
-        let query = `select p.name_product, c.cartQuantity, p.price, p.url, p.product_id
+        let query = `select p.name_product, c.cartQuantity, p.price, p.url, p.product_id,p.description
                      from carts as c
                               join products p on c.product_id = p.product_id
                               join users u on c.user_id = u.user_id
@@ -21,7 +19,6 @@ class CartService {
 
         return result
     }
-
     addProduct = async (input) => {
         let query = `select *
                      from carts

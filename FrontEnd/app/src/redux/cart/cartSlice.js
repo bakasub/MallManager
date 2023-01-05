@@ -1,15 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {toast} from "react-toastify";
 import {addProductToCart, getCart, decreaseCart, increaseCart, removeFromCart,clearCart} from "../../services/cartService";
-
-
 const initialState = {
     cartItems: localStorage.getItem("cartItem") ? JSON.parse(localStorage.getItem("cartItem")
     ) : [],
-    cartTotalQuantity: 0,
+    cartTotalQuantity: localStorage.getItem("cartQuantity") ? JSON.parse(localStorage.getItem("cartQuantity")) : [],
     cartTotalAmount: 0,
 }
-
 const cartSlice = createSlice({
         name: "cart",
         initialState,
@@ -19,10 +16,8 @@ const cartSlice = createSlice({
                     (cartTotal, cartItem) => {
                         const {price, cartQuantity} = cartItem;
                         const itemTotal = price * cartQuantity;
-
                         cartTotal.total += itemTotal;
                         cartTotal.quantity += cartQuantity;
-
                         return cartTotal;
                     },
                     {
@@ -32,6 +27,7 @@ const cartSlice = createSlice({
                 );
                 total = parseFloat(total.toFixed(2));
                 state.cartTotalQuantity = quantity;
+                localStorage.setItem("quantityCart",JSON.stringify(state.cartTotalQuantity));
                 state.cartTotalAmount = total;
             },
         },
@@ -106,7 +102,7 @@ const cartSlice = createSlice({
                             (item) => item.product_id !== cartItem.product_id
                         );
                         state.cartItems = nextCartItems;
-                        toast.error("hieu an cut", {
+                        toast.error("Remove cart ...", {
                             position: "bottom-left",
                         });
                     }
