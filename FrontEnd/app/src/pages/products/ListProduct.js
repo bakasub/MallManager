@@ -13,35 +13,82 @@ function ListProduct() {
     useEffect(() => {
         dispatch(getProducts());
     }, [])
+    const Loading = ()=>{
+        return(
+            <> Loading... </>
+        )
+    }
+    const ShowProducts = ()=>{
+        return(
+            <>
+                <div className="buttons">
+                    <button className="btn btn-outline-dark">All</button>
+                    <button className="btn btn-outline-dark">Men's Clothing</button>
+                </div>
+            </>
+        )
+    }
     return (
         <>
-            <div id="slides" className="carousel slide" data-ride="carousel">
-                <ul className="carousel-indicators ">
-                    <li data-target="#slides" data-slide-to="0" className="active"></li>
-                    <li data-target="#slides" data-slide-to="1"></li>
-                    <li data-target="#slides" data-slide-to="2"></li>
-                </ul>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <div className="">
-                            <img style={{width: '100%', height: '100%', objectFit: 'cover'}}
-                                 src="https://images.fpt.shop/unsafe/fit-in/1190x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/12/26/638076908079823468_H6%20-%201190x300.png"></img>
+           <div className="hero">
+               <div className="card bg-dark text-white">
+                   <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2022/12/hinh-nen-dien-thoai-tet.jpg" className="card-img" alt="background"
+                        height="500px"/>
+                   <div className="card-img-overlay d-flex flex-column justify-content-center">
+                       <div className="container">
+                       <h3 className="card-title display-7 fw-bolder mb-0 ">Happy New Year</h3>
+                       <p className="card-text lead fs-2"></p>
+
+                   </div>
+                   </div>
+               </div>
+           </div>
+            {/*<div id="slides" className="carousel slide" data-ride="carousel">*/}
+            {/*    <ul className="carousel-indicators ">*/}
+            {/*        <li data-target="#slides" data-slide-to="0" className="active"></li>*/}
+            {/*        <li data-target="#slides" data-slide-to="1"></li>*/}
+            {/*        <li data-target="#slides" data-slide-to="2"></li>*/}
+            {/*    </ul>*/}
+            {/*    <div className="carousel-inner">*/}
+            {/*        <div className="carousel-item active">*/}
+            {/*            <div className="">*/}
+            {/*                <img style={{width: '100%', height: '100%', objectFit: 'cover'}}*/}
+            {/*                     src="https://images.fpt.shop/unsafe/fit-in/1190x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/12/26/638076908079823468_H6%20-%201190x300.png"></img>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="carousel-item">*/}
+            {/*            <img*/}
+            {/*                src="https://images.fpt.shop/unsafe/fit-in/1190x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/12/14/638066393334352162_F-H6_1190x300.png"></img>*/}
+            {/*        </div>*/}
+            {/*        <div className="carousel-item">*/}
+            {/*            <img*/}
+            {/*                src="https://images.fpt.shop/unsafe/fit-in/1190x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/12/14/638066534298706298_F-H6_1190x300.png"></img>*/}
+            {/*        </div>*/}
+
+            {/*        <div className="carousel-caption">*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            <br/>
+            <div>
+                <div className="container my-1 py-1" >
+                    <div className="row">
+                        <div className="col-12">
+                            <h4 className="display-7 fw-bolder text-center">All Product</h4>
+                            <hr/>
                         </div>
                     </div>
-                    <div className="carousel-item">
-                        <img
-                            src="https://images.fpt.shop/unsafe/fit-in/1190x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/12/14/638066393334352162_F-H6_1190x300.png"></img>
-                    </div>
-                    <div className="carousel-item">
-                        <img
-                            src="https://images.fpt.shop/unsafe/fit-in/1190x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/12/14/638066534298706298_F-H6_1190x300.png"></img>
-                    </div>
-
-                    <div className="carousel-caption">
+                    <div className="row justify-content-center">
+                        <div className="buttons d-flex justify-content-center mb-1 p-1">
+                            <button className="btn btn-outline-dark me-2">All</button>
+                            <button className="btn btn-outline-dark me-2">IPhone</button>
+                            <button className="btn btn-outline-dark me-2">SamSung</button>
+                            <button className="btn btn-outline-dark me-2">Nokia</button>
+                        </div>
+                        {/*{d? <Loading/> : <ShowProducts/>}*/}
                     </div>
                 </div>
             </div>
-            <br/>
             <div className="container-fluid padding">
                 <div className="row text-center padding">
                     {products.map((item, index) => {
@@ -55,9 +102,7 @@ function ListProduct() {
                                 <p>Quantity: {item.quantity}</p>
                                 <p>Description: {item.description}</p>
                                 <p>Category: {item.category_name}</p>
-
                             </div>
-
                         )
                     })
                     }

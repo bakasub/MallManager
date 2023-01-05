@@ -24,13 +24,15 @@ function LoginPage() {
         }
     }
     return (
-        <div style={{
+        <div id={"aaa"} style={{
             width: '100%',
             height: '100vh',
             backgroundImage: 'url(https://bcp.cdnchinhphu.vn/Uploaded/phungthithuhuyen/2020_03_13/onlineshopping.jpg    )',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            margin :0
+            margin :0,
+            opacity: 1,
+
 
 
         }}>
@@ -40,18 +42,15 @@ function LoginPage() {
                 <Form id="form-login">
                     <h1 className="form-heading">Login</h1>
                     <div className="form-group">
-                        <i className="far fa-user"></i>
+                        <i class="fa fa-user" aria-hidden="true"></i>
                         <Field type="text" className="form-input" name={"username"} placeholder="Username"></Field>
                     </div>
                     <div className="form-group">
-                        <i className="fas fa-key"></i>
+                        <i class="fa fa-lock" aria-hidden="true"></i>
                         <Field type="password" className="form-input" name={"password"} placeholder="Password"></Field>
-                        <div id="eye">
-                            <i className="far fa-eye"></i>
-                        </div>
                     </div>
-                    <button type="submit" className="btn btn-light">Light</button>
-                    <button type="submit" className="ml-3 btn btn-light">
+                    <button type="submit" className="m-3 btn btn-light">Light</button>
+                    <button type="submit" className=" btn btn-light">
                         <Link to={'register'}>Register</Link>
                     </button>
                 </Form>
@@ -59,5 +58,7 @@ function LoginPage() {
         </div>
     );
 }
+
+
 
 export default LoginPage;

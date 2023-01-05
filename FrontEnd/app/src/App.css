@@ -46,9 +46,9 @@ html,body{
   color: #000000;
 }
 .navbar{
-  background-color:red;
   z-index: 15;
   min-width: 100vw;
+  font-size: 18px;
 }
 a:hover{
   color: white !important;
@@ -281,4 +281,12 @@ body{
 
 .btn-outline-success:hover {
   background-color: rgb(250, 26, 8)
+}
+.aaa{
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
 }
