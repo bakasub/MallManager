@@ -8,6 +8,6 @@ export class Cart {
     public user_id: number
     @Column({type:'int'})
     public product_id: number
-    @Column({type:'int'})
-    public quantity: number
+    @Column({type:'int', default:1})
+    public cartQuantity: number
 }
