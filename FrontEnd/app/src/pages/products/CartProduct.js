@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getTotals} from "../../redux/cart/cartSlice";
 import {getCart, decreaseCart, increaseCart,removeFromCart,clearCart} from "../../services/cartService";
 import {Link} from "react-router-dom";
+import Swal from "sweetalert2";
+import {Field} from "formik";
 
 function CartProduct() {
     const cart = useSelector(state => {
@@ -25,15 +27,39 @@ function CartProduct() {
     const handleIncreaseCart = (product) =>{
         dispatch(increaseCart({...product, user_id: user.user_id}))
     }
-    const handleRemove = (product)=>{
-        dispatch(removeFromCart({...product, user_id: user.user_id}))
+    const handleClearCart = (product)=> {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await dispatch(clearCart({...product, user_id: user.user_id}))
+            }
+        })
     }
-    const handleClearCart = (product) => {
-        dispatch(clearCart({...product, user_id: user.user_id}));
-    };
     const {cartTotalAmount} = useSelector( state =>{
         return state.cart
-    })
+    });
+    const handleRemove = (product)=> {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await dispatch(removeFromCart({...product, user_id: user.user_id}))
+            }
+        })
+    }
     return (
         <div className="cart-container">
             <h2>Shopping Cart</h2>
@@ -74,24 +100,23 @@ function CartProduct() {
                                     <div className="cart-product">
                                         <img src={cartItem.url} alt={cartItem.name_product} />
                                         <div>
-                                            <h3>{cartItem.name_product}</h3>
-                                            <p>{cartItem.description}</p>
+                                            <h5>{cartItem.name_product}</h5>
                                             <button onClick={() => handleRemove(cartItem)}>
                                                 Remove
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="cart-product-price">${cartItem.price}</div>
-                                    <div className="cart-product-quantity">
+                                    <h5 className="cart-product-price">${cartItem.price}</h5>
+                                    <h5 className="cart-product-quantity">
                                         <button onClick={() => handleDecreaseCart(cartItem)}>
                                             -
                                         </button>
                                         <div className="count">{cartItem.cartQuantity}</div>
                                         <button onClick={() => handleIncreaseCart(cartItem)}>+</button>
-                                    </div>
-                                    <div className="cart-product-total-price">
+                                    </h5>
+                                    <h5 className="cart-product-total-price">
                                         ${cartItem.price * cartItem.cartQuantity}
-                                    </div>
+                                    </h5>
                                 </div>
                             ))}
                     </div>
@@ -99,12 +124,12 @@ function CartProduct() {
                         <button className="clear-btn" onClick={() => handleClearCart()}>
                             Clear Cart
                         </button>
-                        <div className="cart-checkout">
-                            <div className="subtotal">
+                        <h5 className="cart-checkout">
+                            <h3 className="subtotal">
                                 <span>Subtotal</span>
                                 <span className="amount">${cartTotalAmount}</span>
-                            </div>
-                            <p>Taxes and shipping calculated at checkout</p>
+                            </h3>
+                            <h5>Taxes and shipping calculated at checkout</h5>
                             <Link to={'/home'}><button>Check out</button></Link>
                             <div className="continue-shopping">
                                 <Link to="/home">
@@ -124,7 +149,7 @@ function CartProduct() {
                                     <span>Continue Shopping</span>
                                 </Link>
                             </div>
-                        </div>
+                        </h5>
                     </div>
                 </div>
             )}

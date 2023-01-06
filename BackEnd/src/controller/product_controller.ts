@@ -25,7 +25,6 @@ export class ProductController {
         let products = await this.productService.add(product);
         return res.status(200).json(products);
     }
-
     edit = async (req: Request, res: Response) => {
         console.log(req.body, 'abccccccccc')
         let products = await this.productService.edit(req.params.product_id, req.body);
@@ -34,6 +33,18 @@ export class ProductController {
     delete = async (req: Request, res: Response) => {
         let products = await this.productService.delete(+req.params.product_id);
         return res.status(200).json(products)
+    }
+    advancedFilter = async (req: Request, res: Response) => {
+        try {
+            let input = req.query
+            // let result = await this.productService.advancedFilter(input)
+            let result = await this.productService.advancedFilter(input);
+            return res.status(200).json(result)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
     }
 }
 

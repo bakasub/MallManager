@@ -10,7 +10,6 @@ class CartController {
 
     addProduct = async (req: Request, res: Response) => {
         let input = req.body
-        console.log(input,'inputtttt')
         let result = await CartService.addProduct(input)
         return res.status(200).json(result)
     }
@@ -22,7 +21,7 @@ class CartController {
     }
 
     removeAllProduct = async (req: Request, res: Response) => {
-        let input = req.query
+        let input = req.query;
         await CartService.removeAllProduct(input)
         return res.status(200).json({message: "Cleared your cart"})
     }

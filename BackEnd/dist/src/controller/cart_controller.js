@@ -13,7 +13,6 @@ class CartController {
         };
         this.addProduct = async (req, res) => {
             let input = req.body;
-            console.log(input, 'inputtttt');
             let result = await cart_service_1.default.addProduct(input);
             return res.status(200).json(result);
         };

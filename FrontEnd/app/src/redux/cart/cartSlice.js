@@ -38,7 +38,6 @@ const cartSlice = createSlice({
                     state.cartItems[existingIndex] = {
                         ...state.cartItems[existingIndex],
                     };
-                    console.log(state.cartItems, 'abccccccccccc')
                     toast.info("Increased product quantity", {
                         position: "bottom-left",
                     });
@@ -52,7 +51,6 @@ const cartSlice = createSlice({
                 localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
             });
             builder.addCase(getCart.fulfilled, (state, action) => {
-                console.log("getproduct", action.payload.data)
                 state.cartItems = action.payload.data
             });
             builder.addCase(decreaseCart.fulfilled, (state, action) => {
@@ -81,7 +79,7 @@ const cartSlice = createSlice({
                 );
                 if (state.cartItems[itemIndex].cartQuantity >= 0) {
                     state.cartItems[itemIndex].cartQuantity += 1;
-                    toast.info("Decreased product quantity", {
+                    toast.info("Increased product quantity", {
                         position: "bottom-left",
                     });
                 } else if (state.cartItems[itemIndex].cartQuantity === 1) {

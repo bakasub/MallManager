@@ -34,7 +34,15 @@ export const updateProducts = createAsyncThunk(
     async (data) => {
         const res = await axios.put(`http://localhost:8080/products/${data.product_id}`, data
         )
-
         return res
+    }
+)
+
+export const searchProducts = createAsyncThunk(
+    'products/searchProducts',
+    async (data) => {
+        const res = await axios.post(`http://localhost:8080/products/filter?price=${data.price}`)
+        return res
+
     }
 )

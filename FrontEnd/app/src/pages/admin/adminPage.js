@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteProducts, getProducts} from "../../services/productService";
 import {useNavigate, useParams} from "react-router-dom";
 import Navbar from "../../components/Navbar";
+import Swal from "sweetalert2";
+import {clearCart} from "../../services/cartService";
 
 function AdminPage() {
     const navigate = useNavigate();
@@ -10,6 +12,21 @@ function AdminPage() {
     const products = useSelector(state => {
         return state.product.products;
     })
+    const handleDeleteProduct = (productsId)=> {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await dispatch(deleteProducts(productsId))
+            }
+        })
+    }
     console.log(products, 'productssssss')
     useEffect(() => {
         dispatch(getProducts());
@@ -43,7 +60,7 @@ function AdminPage() {
                                         navigate(`/edit/${item.product_id}`)
                                     }}>Edit</button>
                                     <button onClick={() => {
-                                        dispatch(deleteProducts(item.product_id))
+                                        dispatch(handleDeleteProduct(item.product_id))
                                     }}>Delete
                                     </button>
                                 </tr>

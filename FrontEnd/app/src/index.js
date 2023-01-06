@@ -9,7 +9,7 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
 import { ToastContainer} from "react-toastify";
-import {getTotals} from "./redux/cart/cartSlice";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
