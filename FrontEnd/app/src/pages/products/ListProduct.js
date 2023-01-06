@@ -37,7 +37,7 @@ function ListProduct() {
                    <div className="card-img-overlay d-flex flex-column justify-content-center">
                        <div className="container">
                        <h3 className="card-title display-7 fw-bolder mb-0 ">Happy New Year</h3>
-                       <p className="card-text lead fs-2"></p>
+                       <p className="card-text lead fs-2">I Love You</p>
 
                    </div>
                    </div>

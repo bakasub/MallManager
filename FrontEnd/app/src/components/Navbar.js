@@ -115,7 +115,7 @@ function Navbar() {
             //         </nav>
             //     </div>
             // </div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-sm ">
                 <div className="container">
                     <Link className="navbar-brand" to={'/admin'}><AmazonOutlined />Shopool</Link>
                     {/*<a className="navbar-brand fw-bold fs4" href="#">SHOP</a>*/}

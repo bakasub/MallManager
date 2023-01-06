@@ -27,7 +27,7 @@ function LoginPage() {
         <div id={"aaa"} style={{
             width: '100%',
             height: '100vh',
-            backgroundImage: 'url(https://bcp.cdnchinhphu.vn/Uploaded/phungthithuhuyen/2020_03_13/onlineshopping.jpg    )',
+            backgroundImage: 'url(https://hinhanhdephd.com/wp-content/uploads/2019/12/background-tet-dep-nhat-lam-hinh-nen-dep-10.jpg    )',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             margin :0,
@@ -49,7 +49,7 @@ function LoginPage() {
                         <i class="fa fa-lock" aria-hidden="true"></i>
                         <Field type="password" className="form-input" name={"password"} placeholder="Password"></Field>
                     </div>
-                    <button type="submit" className="m-3 btn btn-light">Light</button>
+                    <button type="submit" className="m-3 btn btn-light">Login</button>
                     <button type="submit" className=" btn btn-light">
                         <Link to={'register'}>Register</Link>
                     </button>
