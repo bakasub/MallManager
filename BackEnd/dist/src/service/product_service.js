@@ -28,8 +28,6 @@ class ProductService {
             return products;
         };
         this.advancedFilter = async (input) => {
-            console.log(input, "input");
-            console.log(isNaN(input.price), isNaN(input.category_id));
             if (input.price == '' && input.category_id == '') {
                 let result = await this.productRepository.query(`select *
                                                              from products

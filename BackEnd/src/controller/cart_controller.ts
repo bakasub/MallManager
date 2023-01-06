@@ -15,7 +15,7 @@ class CartController {
     }
 
     removeAProduct = async (req:Request, res:Response) => {
-        let input = req.body
+        let input = req.query
         await CartService.removeAProduct(input)
         return res.status(200).json({message:"Removed!"})
     }

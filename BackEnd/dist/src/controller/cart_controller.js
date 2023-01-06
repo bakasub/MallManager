@@ -17,7 +17,7 @@ class CartController {
             return res.status(200).json(result);
         };
         this.removeAProduct = async (req, res) => {
-            let input = req.body;
+            let input = req.query;
             await cart_service_1.default.removeAProduct(input);
             return res.status(200).json({ message: "Removed!" });
         };
