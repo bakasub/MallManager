@@ -30,13 +30,13 @@ class ProductService {
         this.advancedFilter = async (input) => {
             console.log(input, "input");
             console.log(isNaN(input.price), isNaN(input.category_id));
-            if (isNaN(input.price) == false && isNaN(input.category_id) == false) {
+            if (input.price == '' && input.category_id == '') {
                 let result = await this.productRepository.query(`select *
                                                              from products
                                                              where name_product like '%${input.name_product}%'`);
                 return result;
             }
-            else if (isNaN(input.price) == false) {
+            else if (input.price !== '') {
                 let result = await this.productRepository.query(`select *
                                                              from products
                                                              where name_product like '%${input.name_product}%'
@@ -44,7 +44,7 @@ class ProductService {
             `);
                 return result;
             }
-            else if (isNaN(input.category_id) == false) {
+            else if (input.category_id !== '') {
                 let result = await this.productRepository.query(`select *
                                                              from products
                                                              where name_product like '%${input.name_product}%'
