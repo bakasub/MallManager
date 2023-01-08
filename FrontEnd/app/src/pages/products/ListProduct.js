@@ -79,30 +79,44 @@ function ListProduct() {
                         </div>
                     </div>
                     <div className="row justify-content-center">
-                        <div className="buttons d-flex justify-content-center mb-1 p-1">
+                        <div className="buttons d-flex justify-content-center   mb-1 p-1">
                             <button className="btn btn-outline-dark me-2">All</button>
                             <button className="btn btn-outline-dark me-2">IPhone</button>
                             <button className="btn btn-outline-dark me-2">SamSung</button>
                             <button className="btn btn-outline-dark me-2">Nokia</button>
+                            <input type="text" className="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="Price" style={{width:500}}/>
                         </div>
                         {/*{d? <Loading/> : <ShowProducts/>}*/}
                     </div>
                 </div>
             </div>
+
             <div className="container-fluid padding">
                 <div className="row text-center padding">
                     {products.map((item, index) => {
                         console.log(item, 'itemBBBBB')
                         return (
-                            <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3" style={{
-                                boxSizing: "border-box",borderRadius:"5px",paddingTop:"10px",boxShadow:"0 14px 28px rgba(0,0,0,0.25), 0 10px 10px (0,0,0,0.22)",background:"#f2f2f2"}}>
-                                <img src={item.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
+                            <div className="col-md3 mb-4">
+                            <div className="card h-100 text-center p-4 "  >
+                                <img src={item.url} className="card-img-top" alt="..." height="250px"/>
                                 <Link to={`detail/${item.product_id}`}><h3> {item.name_product}</h3></Link>
-                                <p>Price: {item.price}</p>
-                                <p>Quantity: {item.quantity}</p>
-                                <p>Description: {item.description}</p>
-                                <p>Category: {item.category_name}</p>
+                                    <div className="card-body">
+                                        <h5 className="card-title mb-0 fw-bold">{item.description}</h5>
+                                        <p className="card-text">${item.price}</p>
+                                    </div>
+                                        <a href="#" className="btn btn-outline-dark">Buy Now</a>
                             </div>
+                            </div>
+                            // <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3" style={{
+                            //     boxSizing: "border-box",borderRadius:"5px",paddingTop:"10px",boxShadow:"0 14px 28px rgba(0,0,0,0.25), 0 10px 10px (0,0,0,0.22)",background:"#f2f2f2"}}>
+                            //     <img src={item.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
+                            //     <Link to={`detail/${item.product_id}`}><h3> {item.name_product}</h3></Link>
+                            //     <p>Price: {item.price}</p>
+                            //     <p>Quantity: {item.quantity}</p>
+                            //     <p>Description: {item.description}</p>
+                            //     <p>Category: {item.category_name}</p>
+                            // </div>
                         )
                     })
                     }

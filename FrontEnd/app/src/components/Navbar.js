@@ -116,9 +116,9 @@ function Navbar() {
             //     </div>
             // </div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-sm ">
-                <div className="container">
-                    <Link className="navbar-brand" to={'/admin'}><AmazonOutlined />Shopool</Link>
-                    {/*<a className="navbar-brand fw-bold fs4" href="#">SHOP</a>*/}
+                <div className="container-fluid">
+                    {/*<Link className="navbar-brand" to={'/admin'}><AmazonOutlined />Shopool</Link>*/}
+                    <a className="navbar-brand fw-bold fs4" href="#">SHOP</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
