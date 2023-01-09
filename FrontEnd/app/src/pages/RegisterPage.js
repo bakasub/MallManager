@@ -42,7 +42,7 @@ function RegisterPage() {
         <div style={{
             width: '100%',
             height: '100vh',
-            backgroundImage: 'url(https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80)',
+            backgroundImage: 'url(https://png.pngtree.com/thumb_back/fw800/background/20201208/pngtree-antique-new-year-lantern-plum-new-year-background-image_504423.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
 
@@ -54,41 +54,37 @@ function RegisterPage() {
                 <Form id="form-register">
                     <h1 className="form-heading">Register</h1>
                     <div className="form-group">
-                        <i className="far fa-user"></i>
+                        <i className="fa fa-user" aria-hidden="true"></i>
                         <Field type="text" className="form-input" name={"username"} placeholder="Username"></Field>
                     </div>
                     <div className="form-group">
-                        <i className="fas fa-key"></i>
+                        <i className="fa fa-unlock" aria-hidden="true"></i>
                         <Field type="password" className="form-input" name={"password"} placeholder="Password"></Field>
-                        <div id="eye">
-                            <i className="far fa-eye"></i>
-                        </div>
+
                     </div>
                     <div className="form-group">
-                        <i className="fas fa-key"></i>
+                        <i className="fa fa-unlock" aria-hidden="true"></i>
                         <Field type="password" className="form-input" name={"re_password"}
                                placeholder="Re_Password"></Field>
-                        <div id="eye">
-                            <i className="far fa-eye"></i>
-                        </div>
+
                     </div>
                     <div className="form-group">
-                        <i className="fas fa-key"></i>
+                        <i className="fa fa-envelope-o" aria-hidden="true"></i>
                         <Field type="email" className="form-input" name={"email"} placeholder="Email"></Field>
                     </div>
                     <div className="form-group">
-                        <i className="fas fa-key"></i>
+                        <i className="fa fa-phone" aria-hidden="true"></i>
                         <Field type="number" className="form-input" name={"phone"} placeholder="Phone"></Field>
                     </div>
                     <div className="form-group">
-                        <i className="fas fa-key"></i>
+                        <i className="fa fa-address-book-o" aria-hidden="true"></i>
                         <Field type="text" className="form-input" name={"address"} placeholder="Address"></Field>
                     </div>
                     <div>
                         {message}
                     </div>
-                    <button type="submit">Submit</button>
-                    <button type="button" className="ml-3">
+                    <button type="submit" className="btn btn-light">Submit</button>
+                    <button type="submit" className="m-3 btn btn-light">
                         <Link to={'/'}>Login</Link>
                     </button>
                 </Form>

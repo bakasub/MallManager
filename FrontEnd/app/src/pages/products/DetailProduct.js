@@ -52,27 +52,52 @@ function DetailProduct() {
                 <div className="row text-center padding">
                     {products.map((itemB, index) => {
                         if (user.userName !== undefined && itemB.product_id == product_id) return (
-                            <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
-                                <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
-                                <h3>{itemB.product_name}</h3>
-                                <p>Price: {itemB.price}</p>
-                                <p>Quantity: {itemB.quantity}</p>
-                                <Link to={`/home`}>
-                                    <button onClick={() => handleAddToCart(itemB)}>Add To Cart</button>
-                                </Link>
-                            </div>
+                            <>
+                                <div className="col-md-6">
+                                    <img src={itemB.url} style={{width: 400, height: 500, objectFit: "cover"}}/>
+                                </div>
+                                <div className="col-md-6">
+                                    <h5 className="text-uppercase text-black-50">
+                                        {itemB.category_name}
+                                    </h5>
+                                    <h1 className="display-5">{itemB.name_product}</h1>
+                                    <h3 className="display-6 fw-bold my-4">
+                                        ${itemB.price}
+                                    </h3>
+                                    <p className="lead">{itemB.description}</p>
+                                    <Link to={`/home`}>
+                                        <button onClick={() => handleAddToCart(itemB)}  className="btn btn-outline-dark">Buy now</button>
+                                    </Link>
+                                </div></>
+                            // <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
+                            //     <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
+                            //     <h3>{itemB.product_name}</h3>
+                            //     <p>Price: {itemB.price}</p>
+                            //     <p>Quantity: {itemB.quantity}</p>
+                            //     <Link to={`/home`}>
+                            //         <button onClick={() => handleAddToCart(itemB)} className="btn btn-outline-dark">Buy Now</button>
+                            //     </Link>
+                            // </div>
                         )
                         else if (itemB.product_id == product_id)
                             return (
-                                <div className="col-xs-12 col-sm-6 col-md-4 imgCover mb-3">
-                                    <img src={itemB.url} style={{width: 300, height: 300, objectFit: "cover"}}></img>
-                                    <h3>{itemB.product_name}</h3>
-                                    <p>Price: {itemB.price}</p>
-                                    <p>Quantity: {itemB.quantity}</p>
-                                    <Link to={'/'}>
-                                        <button>Mua Hàng</button>
-                                    </Link>
-                                </div>
+                                <>
+                                    <div className="col-md-6">
+                                        <img src={itemB.url} style={{width: 400, height: 500, objectFit: "cover"}}/>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <h5 className="text-uppercase text-black-50">
+                                            {itemB.category_name}
+                                        </h5>
+                                        <h1 className="display-5">{itemB.name_product}</h1>
+                                        <h3 className="display-6 fw-bold my-4">
+                                            ${itemB.price}
+                                        </h3>
+                                        <p className="lead">{itemB.description}</p>
+                                        <Link to={`/`}>
+                                            <button onClick={() => handleAddToCart(itemB)}  className="btn btn-outline-dark">Buy now</button>
+                                        </Link>
+                                    </div></>
                             )
                     })}
                 </div>

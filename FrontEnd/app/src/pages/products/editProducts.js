@@ -63,39 +63,52 @@ function EditProduct() {
             }}>
 
                 <Form>
+                    <h5>Name</h5>
+
+
                     <div className="group">
-                        <label htmlFor="exampleInputEmail1">Name</label>
+                        <label htmlFor="exampleInputEmail1"></label>
                         <Field type={'text'} name={'name_product'} className={'form-control'}/>
                     </div>
+                    <h5>Price</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Price</label>
+                        <label htmlFor="exampleInputEmail1"></label><br/>
                         <Field type={'number'} name={'price'} className={'form-control'}/>
                     </div>
+                    <h5>Quantity</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Quantity</label>
+                        <label htmlFor="exampleInputPassword1"></label>
                         <Field type={'number'} name={'quantity'} className={'form-control'}/>
                     </div>
+                    <h5>Description</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Description</label>
+                        <label htmlFor="exampleInputPassword1"></label>
                         <Field type={'text'} name={'description'} className={'form-control'}/>
                     </div>
-                    <div>
-                        <Field as="select" name="category_id">
-                            <option disabled value="">Pick a winner</option>
-                            <option value='1'>Iphone</option>
-                            <option value='2'>SamSung</option>
-                            <option value='3'>Oppo</option>
+                    <br/>
+
+
+                    <div  >
+                        <Field as="select" name="category_id" style={{fontsize:50}}>
+                            <option style={{fontSize:25}} disabled value="">Pick a winner</option>
+                            <option  style={{fontSize:25}} value='1'>Iphone</option>
+                            <option style={{fontSize:25}} value='2'>SamSung</option>
+                            <option style={{fontSize:25}} value='3'>Nokia</option>
                         </Field>
                     </div>
+                    <br/>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Image</label>
-                        <input
+                        <label style={{fontSize:25}} htmlFor="exampleInputPassword1">Image</label>
+                        <input style={{fontSize:25}}
                             type="file" onChange={(event) => {
                             setSubmitting(true)
                             uploadFile(event.target.files[0])
                         }}/>
+                        <div className="col-md-6">
+                            <img src={item.url} style={{width: 400, height: 500, objectFit: "cover"}}/>
+                        </div>
                     </div>
-                    <button type="submit" disabled={submitting}>Submit</button>
+                    <button className="btn btn-outline-dark" type="submit" disabled={submitting}>Submit</button>
                 </Form>
             </Formik>
         </div>
