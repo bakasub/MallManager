@@ -6,7 +6,9 @@ const product_1 = require("../model/product");
 class ProductService {
     constructor() {
         this.findAll = async () => {
-            let products = await this.productRepository.find();
+            let products = await this.productRepository.query(`select *
+                                                           from Products
+                                                                    JOIN Category on Products.category_id = Category.category_id`);
             return products;
         };
         this.findByName = async (name_product) => {
@@ -28,33 +30,28 @@ class ProductService {
             return products;
         };
         this.advancedFilter = async (input) => {
-            if (input.price == '' && input.category_id == '') {
+            console.log('inputtt', input);
+            if (input.price == 0) {
                 let result = await this.productRepository.query(`select *
-                                                             from products
-                                                             where name_product like '%${input.name_product}%'`);
+                                                             from products`);
                 return result;
             }
-            else if (input.price !== '') {
+            if (input.price == 1) {
                 let result = await this.productRepository.query(`select *
                                                              from products
-                                                             where name_product like '%${input.name_product}%'
-                                                               and price = '${input.price}'
-            `);
+                                                             where price BETWEEN 0 and 10000000`);
                 return result;
             }
-            else if (input.category_id !== '') {
+            if (input.price == 2) {
                 let result = await this.productRepository.query(`select *
                                                              from products
-                                                             where name_product like '%${input.name_product}%'
-                                                               and category_id = '${input.category_id}'`);
+                                                             where price BETWEEN 10000000 and 20000000`);
                 return result;
             }
-            else {
+            if (input.price == 3) {
                 let result = await this.productRepository.query(`select *
                                                              from products
-                                                             where name_product like '%${input.name_product}%'
-                                                               and price = '${input.price}'
-                                                               and category_id = '${input.category_id}'`);
+                                                             where price BETWEEN 20000000 and 100000000`);
                 return result;
             }
         };

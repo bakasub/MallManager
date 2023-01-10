@@ -12,7 +12,6 @@ export const addProducts = createAsyncThunk(
     'products/addProducts',
     async (data) => {
         const res = await axios.post('http://localhost:8080/products/add',data)
-        console.log(data,'data1')
         return data
     }
 )
@@ -20,7 +19,6 @@ export const deleteProducts = createAsyncThunk(
     'products/deleteProducts',
     async (data) => {
         const res = await axios.delete(`http://localhost:8080/products/${data}`)
-        console.log(data,'dataaaaaaaa')
         return data
     }
 )
@@ -28,15 +26,23 @@ export const findProducts = createAsyncThunk(
     'products/findProducts',
     async (data) => {
         const res = await axios.get('http://localhost:8080/products/find-by-name?name_product=' +data.name_product)
-        console.log('data', data)
         return res
     }
 )
 export const updateProducts = createAsyncThunk(
     'products/updateProducts',
     async (data) => {
-        const res = await axios.put(`http://localhost:8080/products/${data.product_id}`, data)
-        console.log('res', res)
-        // return res
+        const res = await axios.put(`http://localhost:8080/products/${data.product_id}`, data
+        )
+        return res
+    }
+)
+
+export const searchProducts = createAsyncThunk(
+    'products/searchProducts',
+    async (data) => {
+        const res = await axios.post(`http://localhost:8080/products/filter?price=${data.price}`)
+        return res
+
     }
 )

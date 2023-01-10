@@ -1,5 +1,4 @@
 import {AppDataSource} from "../data-source";
-import {Request, Response} from "express";
 import {Product} from "../model/product";
 
 
@@ -15,10 +14,11 @@ export class ProductService {
     }
 
     findAll = async () => {
-        let products = await this.productRepository.find();
+        let products = await this.productRepository.query(`select *
+                                                           from Products
+                                                                    JOIN Category on Products.category_id = Category.category_id`);
         return products
     }
-
     findByName = async (name_product) => {
         let products = await this.productRepository.query(`select *
                                                            from products
@@ -30,47 +30,37 @@ export class ProductService {
         let products = await this.productRepository.save(product)
         return products
     }
-
     edit = async (product_id, product) => {
-        // let product_id= +req.params.product_id;
-        // let product = req.body;
         let products = await this.productRepository.update(product_id, product);
         return products
     }
-
     delete = async (productId: number) => {
         let products = await this.productRepository.delete(productId);
         return products
     }
-
     advancedFilter = async (input) => {
-        if (input.price == '' && input.category_id == '') {
+        console.log('inputtt',input)
+        if (input.price == 0) {
             let result = await this.productRepository.query(`select *
-                                                             from products
-                                                             where name_product like '%${input.name_product}%'`)
-            return result
-        } else if (input.price !== '') {
-            let result = await this.productRepository.query(`select *
-                                                             from products
-                                                             where name_product like '%${input.name_product}%'
-                                                               and price = '${input.price}'
-            `)
-            return result
-        } else if (input.category_id !== '') {
-            let result = await this.productRepository.query(`select *
-                                                             from products
-                                                             where name_product like '%${input.name_product}%'
-                                                               and category_id = '${input.category_id}'`)
-            return result
-        } else {
-            let result = await this.productRepository.query(`select *
-                                                             from products
-                                                             where name_product like '%${input.name_product}%'
-                                                               and price = '${input.price}'
-                                                               and category_id = '${input.category_id}'`)
+                                                             from products`)
             return result
         }
-
+        if (input.price == 1) {
+            let result = await this.productRepository.query(`select *
+                                                             from products
+                                                             where price BETWEEN 0 and 10000000`)
+            return result
+        } if (input.price == 2) {
+            let result = await this.productRepository.query(`select *
+                                                             from products
+                                                             where price BETWEEN 10000000 and 20000000`)
+            return result
+        } if (input.price == 3) {
+            let result = await this.productRepository.query(`select *
+                                                             from products
+                                                             where price BETWEEN 20000000 and 100000000`)
+            return result
+        }
     }
 }
 

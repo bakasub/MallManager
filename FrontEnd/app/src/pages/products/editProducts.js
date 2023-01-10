@@ -13,10 +13,8 @@ function EditProduct() {
     const {product_id} = useParams();
     const navigate = useNavigate();
     const product = useSelector(state => {
-
         return state.product.products;
     })
-    console.log(product)
     const [submitting, setSubmitting] = useState(false)
     const handleEdit = async (values) => {
         let data = {
@@ -25,7 +23,7 @@ function EditProduct() {
             url: img
         }
         await dispatch(updateProducts(data))
-        await navigate('/home')
+        await navigate('/admin')
     }
     const [imageUrls, setImageUrls] = useState([]);
     const [img, setImg] = useState("");
@@ -52,7 +50,7 @@ function EditProduct() {
     const item = product.filter(item => item.product_id == product_id)[0]
     return (
         <div>
-            <h1 style={{textAlign: "center", backgroundColor: "white"}}>Add Products</h1>
+            <h1 style={{textAlign: "center", backgroundColor: "white"}}>Edit Products</h1>
             <Formik initialValues={{
                 name_product: item.name_product,
                 price: item.price,
@@ -65,35 +63,52 @@ function EditProduct() {
             }}>
 
                 <Form>
+                    <h5>Name</h5>
+
+
                     <div className="group">
-                        <label htmlFor="exampleInputEmail1">Name</label>
+                        <label htmlFor="exampleInputEmail1"></label>
                         <Field type={'text'} name={'name_product'} className={'form-control'}/>
                     </div>
+                    <h5>Price</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Price</label>
+                        <label htmlFor="exampleInputEmail1"></label><br/>
                         <Field type={'number'} name={'price'} className={'form-control'}/>
                     </div>
+                    <h5>Quantity</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Quantity</label>
+                        <label htmlFor="exampleInputPassword1"></label>
                         <Field type={'number'} name={'quantity'} className={'form-control'}/>
                     </div>
+                    <h5>Description</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Description</label>
+                        <label htmlFor="exampleInputPassword1"></label>
                         <Field type={'text'} name={'description'} className={'form-control'}/>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Category</label>
-                        <Field type={'number'} name={'category_id'} className={'form-control'}/>
+                    <br/>
+
+
+                    <div  >
+                        <Field as="select" name="category_id" style={{fontsize:50}}>
+                            <option style={{fontSize:25}} disabled value="">Pick a winner</option>
+                            <option  style={{fontSize:25}} value='1'>Iphone</option>
+                            <option style={{fontSize:25}} value='2'>SamSung</option>
+                            <option style={{fontSize:25}} value='3'>Nokia</option>
+                        </Field>
                     </div>
+                    <br/>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Image</label>
-                        <input
+                        <label style={{fontSize:25}} htmlFor="exampleInputPassword1">Image</label>
+                        <input style={{fontSize:25}}
                             type="file" onChange={(event) => {
                             setSubmitting(true)
                             uploadFile(event.target.files[0])
                         }}/>
+                        <div className="col-md-6">
+                            <img src={item.url} style={{width: 400, height: 500, objectFit: "cover"}}/>
+                        </div>
                     </div>
-                    <button type="submit" disabled={submitting}>Submit</button>
+                    <button className="btn btn-outline-dark" type="submit" disabled={submitting}>Submit</button>
                 </Form>
             </Formik>
         </div>

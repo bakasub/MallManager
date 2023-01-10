@@ -54,40 +54,73 @@ function AddProduct() {
                 quantity: '',
                 description: '',
                 category_id: '',
-                url: imageUrls
+                url: imageUrls,
             }} onSubmit={(values) => {
                 handleAdd(values);
             }}>
                 <Form>
+
+                        {/*<div className="form-group">*/}
+                        {/*    <label htmlFor="exampleInputEmail1">Email address</label>*/}
+                        {/*    <input type="email" className="form-control" id="exampleInputEmail1"*/}
+                        {/*           aria-describedby="emailHelp" placeholder="Enter email"/>*/}
+                        {/*       */}
+                        {/*</div>*/}
+                        {/*<div className="form-group">*/}
+                        {/*    <label htmlFor="exampleInputPassword1">Password</label>*/}
+                        {/*    <input type="password" className="form-control" id="exampleInputPassword1"*/}
+                        {/*           placeholder="Password"/>*/}
+                        {/*</div>*/}
+                        {/*<div className="form-check">*/}
+                        {/*    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>*/}
+                        {/*        <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>*/}
+                        {/*</div>*/}
+                    <h5>Name</h5>
+
+
                     <div className="group">
-                        <label htmlFor="exampleInputEmail1">Name</label>
+                        <label htmlFor="exampleInputEmail1"></label>
                         <Field type={'text'} name={'name_product'} className={'form-control'}/>
                     </div>
+                    <h5>Price</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Price</label>
+                        <label htmlFor="exampleInputEmail1"></label><br/>
                         <Field type={'number'} name={'price'} className={'form-control'}/>
                     </div>
+                    <h5>Quantity</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Quantity</label>
+                        <label htmlFor="exampleInputPassword1"></label>
                         <Field type={'number'} name={'quantity'} className={'form-control'}/>
                     </div>
+                    <h5>Description</h5>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Description</label>
+                        <label htmlFor="exampleInputPassword1"></label>
                         <Field type={'text'} name={'description'} className={'form-control'}/>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Category</label>
-                        <Field type={'number'} name={'category_id'} className={'form-control'}/>
+                    <br/>
+
+
+                    <div  >
+                        <Field as="select" name="category_id" style={{fontsize:50}}>
+                            <option style={{fontSize:25}} disabled value="">Pick a winner</option>
+                            <option  style={{fontSize:25}} value='1'>Iphone</option>
+                            <option style={{fontSize:25}} value='2'>SamSung</option>
+                            <option style={{fontSize:25}} value='3'>Nokia</option>
+                        </Field>
                     </div>
+                    <br/>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Image</label>
-                        <input
+                        <label style={{fontSize:25}} htmlFor="exampleInputPassword1">Image</label>
+                        <input style={{fontSize:25}}
                             type="file" onChange={(event) => {
                             setSubmitting(true)
                             uploadFile(event.target.files[0])
                         }}/>
                     </div>
-                    <button type="submit" disabled={submitting}>Submit</button>
+                    <button className="btn btn-outline-dark" type={onclick} disabled={submitting}>Submit</button>
+                    <button className="m-3 btn btn-outline-dark" type={onclick} style={{color:"red"}}>
+                        <Link to={'/admin'}>Back</Link>
+                    </button>
                 </Form>
             </Formik>
         </div>

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const data_source_1 = require("../data-source");
 const cart_1 = require("../model/cart");
+const product_1 = require("../model/product");
 class CartService {
     constructor() {
         this.getAnUserCart = async (id) => {
@@ -76,20 +77,28 @@ class CartService {
                                                          from carts
                                                          where user_id = ${input.user_id}
                                                            and product_id = ${input.product_id}`);
-            let newQuantity = (currentQuantity[0].cartQuantity + 1);
-            await this.cartRepo.query(`update carts
+            let productQuantityAvail = await this.productRepo.query(`select quantity from products where product_id = '${input.product_id}'`);
+            if (productQuantityAvail[0].quantity <= currentQuantity[0].cartQuantity) {
+                console.log('There are no more products in our storage');
+                return currentQuantity[0].cartQuantity;
+            }
+            else {
+                let newQuantity = (currentQuantity[0].cartQuantity + 1);
+                await this.cartRepo.query(`update carts
                                    set cartQuantity = ${newQuantity}
                                    where user_id = ${input.user_id}
                                      and product_id = ${input.product_id}`);
-            let result = await this.cartRepo.query(`select *
+                let result = await this.cartRepo.query(`select *
                                                 from carts
                                                 where user_id = ${input.user_id}
                                                   and product_id = ${input.product_id}`);
-            return result[0].quantity;
+                return result[0].quantity;
+            }
         };
         data_source_1.AppDataSource.initialize().then(async (connection) => {
             console.log('Fetched cart data');
             this.cartRepo = await connection.getRepository(cart_1.Cart);
+            this.productRepo = await connection.getRepository(product_1.Product);
         });
     }
 }

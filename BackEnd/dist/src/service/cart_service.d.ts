@@ -1,5 +1,6 @@
 declare class CartService {
     cartRepo: any;
+    productRepo: any;
     constructor();
     getAnUserCart: (id: any) => Promise<any>;
     addProduct: (input: any) => Promise<any>;

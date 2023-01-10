@@ -27,15 +27,27 @@ class CartController {
     }
 
     decreaseQuantity = async (req: Request, res: Response) => {
-        let input = req.body
-        let result = await CartService.decreaseQuantity(input)
-        return res.status(200).json(result)
+        try {
+            let input = req.body
+            let result = await CartService.decreaseQuantity(input)
+            return res.status(200).json(result)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
     }
 
     increaseQuantity = async (req: Request, res: Response) => {
-        let input = req.body
-        let result = await CartService.increaseQuantity(input)
-        return res.status(200).json(result)
+        try {
+            let input = req.body
+            let result = await CartService.increaseQuantity(input)
+            return res.status(200).json(result)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
     }
 }
 

@@ -28,7 +28,7 @@ class ProductController {
         };
         this.advancedFilter = async (req, res) => {
             try {
-                let input = req.body;
+                let input = req.query;
                 let result = await this.productService.advancedFilter(input);
                 return res.status(200).json(result);
             }
