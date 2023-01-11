@@ -10,6 +10,9 @@ import CartProduct from "./pages/products/CartProduct";
 import EditProduct from "./pages/products/editProducts";
 import {useSelector} from "react-redux";
 import AdminPage from "./pages/admin/adminPage";
+import Checkout from "./pages/products/Checkout";
+import OrderProduct from "./pages/products/OrderProduct";
+import ListOrder from "./pages/products/ListOrder";
 
 
 function App() {
@@ -27,12 +30,15 @@ function App() {
                             <Route path={'admin'} element={<AdminPage/>}></Route>
                             <Route path={'edit/:product_id'} element={<EditProduct/>}></Route>
                             <Route path={'add-product'} element={<AddProduct/>}></Route>
+                            <Route path={'order-product'} element={<OrderProduct/>}></Route>
                         </>
                         :
                         <Route path="*" element={<ListProduct/>}/>
                     }
                     <Route path={'home'} element={<Home/>}>
                         <Route path={''} element={<ListProduct/>}></Route>
+                        <Route path={'checkout'} element={<Checkout/>}></Route>
+                        <Route path={'list-order'} element={<ListOrder/>}></Route>
                         <Route path='detail/:product_id' element={<DetailProduct></DetailProduct>}></Route>
                         { (user.userName != null) ?
                             <>

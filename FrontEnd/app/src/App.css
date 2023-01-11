@@ -269,7 +269,7 @@ body{
 .btn-primary {
   background-color: rgb(66, 144, 225);
   border: 1px solid white;
-  height: 45px;
+  /*height: 45px;*/
   left: 45%;
 }
 

@@ -6,6 +6,7 @@ const initialState = {
     ) : [],
     cartTotalQuantity: localStorage.getItem("cartQuantity") ? JSON.parse(localStorage.getItem("cartQuantity")) : [],
     cartTotalAmount: 0,
+    quantity:localStorage.getItem("quantity" ? JSON.parse(localStorage.getItem("quantity")) : [])
 }
 const cartSlice = createSlice({
         name: "cart",
@@ -91,6 +92,8 @@ const cartSlice = createSlice({
                         position: "bottom-left",
                     });
                 }
+                const quantity = action.payload.quantity
+                localStorage.setItem("quantity",JSON.stringify(quantity));
                 localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
             });
             builder.addCase(removeFromCart.fulfilled, (state, action) => {

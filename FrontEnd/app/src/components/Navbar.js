@@ -23,11 +23,12 @@ function Navbar() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-sm ">
                 <div className="container-fluid">
-                    <h2>Hello Boss</h2>
                     <div className="container-fluid">
-                        <ul className="navbar-nav mx-auto mb-2 mb-lg-4">
-                            <h3 className="navbar-brand fw-bold fs4" href="#">  {<Link className="navbar-brand" to={'/admin'}><AmazonOutlined />AMAZING SHOP</Link>}</h3>
-                        </ul>
+                        <div>
+                            <ul className="navbar-nav mx-auto mb-2 mb-lg-4">
+                                <h3 className="navbar-brand fw-bold fs4" href="#">  {<Link className="navbar-brand" to={'/admin'}><AmazonOutlined />AMAZING SHOP</Link>}</h3>
+                            </ul>
+                        </div>
                         <input style={{width:500}} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                                onChange={(e)=>{
                                    setFind(e.target.value)
@@ -46,6 +47,11 @@ function Navbar() {
                                 handleGetCart()
                             }}> <i  class="fa fa-plus" aria-hidden="true">Add Product</i></Link>
                         </button>
+                        <button href="" type="submit" className="ml-3 btn btn-outline-dark">
+                            <Link className="dropdown-item" to={'/order-product'} onClick={() => {
+                                handleGetCart()
+                            }}> <i className="fa fa-plus" aria-hidden="true">Order Product</i></Link>
+                        </button>
                         <div className="buttons">
                             <button href="" type="submit" className="ml-3 btn btn-outline-dark">
                                 <Link onClick={() => {localStorage.clear()
@@ -61,10 +67,8 @@ function Navbar() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-sm ">
                 <div className="container-fluid">
-                    <h1>Hello Friend</h1>
-
                     <div className="container-fluid">
-                        <ul className="navbar-nav mx-auto mb-2 mb-lg-4">
+                        <ul className="navbar-nav">
                             <h3 className="navbar-brand fw-bold fs4" href="#">  {<Link className="navbar-brand" to={'/home'}><AmazonOutlined />AMAZING SHOP</Link>}</h3>
 
                         </ul>
@@ -81,9 +85,14 @@ function Navbar() {
                                             } className="btn btn-outline-dark" type="submit"><i className="fa fa-search"
                                                                                                 aria-hidden="true">Search</i>
                                             </button>
-
                         <Link className="m-4 navbar-brand fw-bold fs4 " to={"/home"}>{userName.userName}</Link>
                         <div className="buttons">
+                            <button href="" type="submit" className="ml-3 btn btn-outline-dark">
+                                <Link className="dropdown-item" to={'checkout'}><i className="fa fa-sign-out me-1">CheckOut</i></Link>
+                            </button>
+                            <button href="" type="submit" className="ml-3 btn btn-outline-dark">
+                                <Link className="dropdown-item" to={'/home/list-order'}> <i className="fa fa-plus" aria-hidden="true">List Order</i></Link>
+                            </button>
                             <button href="" type="submit" className="ml-3 btn btn-outline-dark">
                                 <Link onClick={() => {localStorage.clear()
                                 }} className="dropdown-item" to={'/'}><i className="fa fa-sign-out me-1">Logout</i></Link>

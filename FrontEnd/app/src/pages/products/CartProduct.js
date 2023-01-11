@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getTotals} from "../../redux/cart/cartSlice";
 import {getCart, decreaseCart, increaseCart,removeFromCart,clearCart} from "../../services/cartService";
@@ -8,7 +8,6 @@ import {Field} from "formik";
 
 function CartProduct() {
     const cart = useSelector(state => {
-        console.log(state.cart.cartItems)
         return state.cart.cartItems
     });
     const user = useSelector(state => {
@@ -26,7 +25,9 @@ function CartProduct() {
     }
     const handleIncreaseCart = (product) =>{
         dispatch(increaseCart({...product, user_id: user.user_id}))
+        setSubmitting(true)
     }
+    const [submitting, setSubmitting] = useState(true)
     const handleClearCart = (product)=> {
         Swal.fire({
             title: 'Are you sure?',
@@ -112,7 +113,13 @@ function CartProduct() {
                                             -
                                         </button>
                                         <div className="count">{cartItem.cartQuantity}</div>
-                                        <button onClick={() => handleIncreaseCart(cartItem)}>+</button>
+                                        <button onClick={() =>{
+                                            console.log(localStorage.quantity,'dacacacac')
+                                            if (cartItem.cartQuantity == localStorage.quantity)
+                                                setSubmitting(false)
+                                            handleIncreaseCart(cartItem)
+                                        }
+                                        }>+</button>
                                     </h5>
                                     <h5 className="cart-product-total-price">
                                         ${cartItem.price * cartItem.cartQuantity}
@@ -130,9 +137,11 @@ function CartProduct() {
                                 <span className="amount">${cartTotalAmount}</span>
                             </h3>
                             <h5>Taxes and shipping calculated at checkout</h5>
-                            <Link to={'/home'}><button>Check out</button></Link>
+
+                            <Link to={'/home/checkout'}><button>Check out</button></Link>
                             <div className="continue-shopping">
                                 <Link to="/home">
+
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="20"

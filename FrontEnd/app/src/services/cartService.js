@@ -4,9 +4,8 @@ import axios from "axios";
 export const  addProductToCart = createAsyncThunk(
     'carts/addCarts',
     async (data) => {
-        console.log(data,'llllllllll')
+        // console.log(data,'llllllllll')
         const res = await axios.post('http://localhost:8080/cart/add',data)
-
         return data
     }
 )
@@ -28,7 +27,8 @@ export const increaseCart = createAsyncThunk(
     'carts/getIncreaseCart',
     async (data) => {
         const res = await axios.post(`http://localhost:8080/cart/increase-quantity`,data)
-        return data
+        console.log(res.data,'rerererer')
+        return res.data
     }
 )
 export const removeFromCart = createAsyncThunk(
