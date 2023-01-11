@@ -7,7 +7,6 @@ class CartService {
     productRepo: any
     constructor() {
         AppDataSource.initialize().then(async connection => {
-            console.log('Fetched cart data')
             this.cartRepo = await connection.getRepository(Cart)
             this.productRepo = await connection.getRepository(Product)
         })
@@ -99,12 +98,11 @@ class CartService {
                                    set cartQuantity = ${newQuantity}
                                    where user_id = ${input.user_id}
                                      and product_id = ${input.product_id}`)
-
             let result = await this.cartRepo.query(`select *
                                                 from carts
                                                 where user_id = ${input.user_id}
                                                   and product_id = ${input.product_id}`)
-            return result[0].quantity
+            return result[0]
         }
     }
 }

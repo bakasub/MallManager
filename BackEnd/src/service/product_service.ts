@@ -7,7 +7,6 @@ export class ProductService {
 
     constructor() {
         AppDataSource.initialize().then(connection => {
-            console.log('Connect Database Success!')
             this.productRepository = connection.getRepository(Product);
         })
         this.productRepository = AppDataSource.getRepository(Product);
@@ -39,7 +38,6 @@ export class ProductService {
         return products
     }
     advancedFilter = async (input) => {
-        console.log('inputtt',input)
         if (input.price == 0) {
             let result = await this.productRepository.query(`select *
                                                              from products`)

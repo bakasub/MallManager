@@ -42,6 +42,7 @@ class CartController {
             try {
                 let input = req.body;
                 let result = await cart_service_1.default.increaseQuantity(input);
+                console.log(result);
                 return res.status(200).json(result);
             }
             catch (e) {

@@ -30,7 +30,6 @@ class ProductService {
             return products;
         };
         this.advancedFilter = async (input) => {
-            console.log('inputtt', input);
             if (input.price == 0) {
                 let result = await this.productRepository.query(`select *
                                                              from products`);
@@ -56,7 +55,6 @@ class ProductService {
             }
         };
         data_source_1.AppDataSource.initialize().then(connection => {
-            console.log('Connect Database Success!');
             this.productRepository = connection.getRepository(product_1.Product);
         });
         this.productRepository = data_source_1.AppDataSource.getRepository(product_1.Product);

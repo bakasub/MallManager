@@ -92,11 +92,10 @@ class CartService {
                                                 from carts
                                                 where user_id = ${input.user_id}
                                                   and product_id = ${input.product_id}`);
-                return result[0].quantity;
+                return result[0];
             }
         };
         data_source_1.AppDataSource.initialize().then(async (connection) => {
-            console.log('Fetched cart data');
             this.cartRepo = await connection.getRepository(cart_1.Cart);
             this.productRepo = await connection.getRepository(product_1.Product);
         });

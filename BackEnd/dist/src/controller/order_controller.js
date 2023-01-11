@@ -19,9 +19,45 @@ class OrderController {
         };
         this.displayAnUserOrders = async (req, res) => {
             try {
-                let userId = req.params.id;
+                let userId = req.params.user;
                 let list = await order_service_1.default.getAnUserOrders(userId);
-                return res.status(200).json;
+                return res.status(200).json(list);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
+        this.createOrder = async (req, res) => {
+            try {
+                let userId = req.body;
+                let result = await order_service_1.default.createOrder(userId);
+                return res.status(200).json(result);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
+        this.cancelOrder = async (req, res) => {
+            try {
+                let orderId = req.params.order;
+                let result = await order_service_1.default.cancelOrder(orderId);
+                return res.status(200).json(result);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
+        this.displayAnOrderDetails = async (req, res) => {
+            try {
+                let orderId = req.params.order;
+                let result = await order_service_1.default.displayAnOrderDetails(orderId);
+                return res.status(200).json(result);
             }
             catch (e) {
                 res.json({
