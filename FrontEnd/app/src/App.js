@@ -4,15 +4,16 @@ import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import LoginPage from "./pages/LoginPage";
 import ListProduct from "./pages/products/ListProduct";
-import AddProduct from "./pages/products/AddProduct";
-import DetailProduct from "./pages/products/DetailProduct";
+import AddProduct from "./pages/admin/AddProduct";
+import DetailProduct from "./pages/admin/DetailProduct";
 import CartProduct from "./pages/products/CartProduct";
-import EditProduct from "./pages/products/editProducts";
+import EditProduct from "./pages/admin/editProducts";
 import {useSelector} from "react-redux";
 import AdminPage from "./pages/admin/adminPage";
 import Checkout from "./pages/products/Checkout";
 import OrderProduct from "./pages/products/OrderProduct";
 import ListOrder from "./pages/products/ListOrder";
+import OrderDetail from "./pages/products/OrderDetail";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                         <Route path={''} element={<ListProduct/>}></Route>
                         <Route path={'checkout'} element={<Checkout/>}></Route>
                         <Route path={'list-order'} element={<ListOrder/>}></Route>
+                        <Route path={'orderDetail/:order_id'} element={<OrderDetail/>}></Route>
                         <Route path='detail/:product_id' element={<DetailProduct></DetailProduct>}></Route>
                         { (user.userName != null) ?
                             <>

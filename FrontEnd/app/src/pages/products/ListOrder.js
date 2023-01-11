@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {cancelOrder, getOrder} from "../../services/orderService";
 import {useDispatch, useSelector} from "react-redux";
 import Swal from "sweetalert2";
+import {Link} from "react-router-dom";
 
 function ListOrder() {
     const dispatch = useDispatch();
@@ -9,10 +10,10 @@ function ListOrder() {
         dispatch(getOrder())
     }, [])
     const order = useSelector(state => {
-        console.log(state.orders.order)
-        return state.orders.order
+        console.log(state)
+        return state.orders.orders
     })
-    const username = localStorage.getItem("userName");
+    const user_id = localStorage.getItem("user_id");
     const handleCancelOrder = (order_id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -42,25 +43,28 @@ function ListOrder() {
 
                     </tr>
                     {order.map((item, index) => {
-                        return (
-                            <tr>
-                                <td style={{fontSize: 25}}>{index + 1}</td>
-                                <td style={{fontSize: 25}}>{item.order_id}</td>
-                                <td style={{fontSize: 25}}>{item.user_id}</td>
-                                <td style={{fontSize: 25}}>
-                                    {item.status == 1 ? 'Pending' : ''}
-                                    {item.status == 2 ? 'Accept' : ''}
-                                    {item.status == 3 ? 'Cancel' : ''}
-                                </td>
-                                <td style={{fontSize: 25}}>
-                                    <button>Detail</button>
-                                    <button disabled={item.status !== 1 ? true: false} onClick={() => {
-                                        dispatch(handleCancelOrder(item.order_id))
-                                    }}>Cancel
-                                    </button>
-                                </td>
-                            </tr>
-                        )
+                        if (item.user_id == user_id)
+                            return (
+                                <tr>
+                                    <td style={{fontSize: 25}}>{index + 1}</td>
+                                    <td style={{fontSize: 25}}>{item.order_id}</td>
+                                    <td style={{fontSize: 25}}>{item.user_id}</td>
+                                    <td style={{fontSize: 25}}>
+                                        {item.status == 1 ? 'Pending' : ''}
+                                        {item.status == 2 ? 'Accept' : ''}
+                                        {item.status == 3 ? 'Cancel' : ''}
+                                    </td>
+                                    <td style={{fontSize: 25}}>
+                                        <Link to={`/home/orderDetail/${item.order_id}`}>
+                                            <button>Detail</button>
+                                        </Link>
+                                        <button disabled={item.status !== 1 ? true : false} onClick={() => {
+                                            dispatch(handleCancelOrder(item.order_id))
+                                        }}>Cancel
+                                        </button>
+                                    </td>
+                                </tr>
+                            )
                     })
                     }
                 </table>

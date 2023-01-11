@@ -15,7 +15,7 @@ export class ProductService {
 
     findAll = async () => {
         let products = await this.productRepository.query(`select *
-                                                           from Products
+                                                           from products
                                                                     JOIN Category on Products.category_id = Category.category_id`);
         return products
     }

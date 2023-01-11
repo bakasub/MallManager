@@ -15,6 +15,13 @@ export const getOrder = createAsyncThunk(
         return res
     }
 )
+export const getOrderDetail = createAsyncThunk(
+    'order/getOrderDetail',
+    async (data) => {
+        const res = await axios.get(`http://localhost:8080/order/an-order/${data}`)
+        return res
+    }
+)
 export const cancelOrder = createAsyncThunk(
     'order/cancelOrder',
     async (data) => {

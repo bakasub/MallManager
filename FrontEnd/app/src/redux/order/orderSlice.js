@@ -1,12 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {toast} from "react-toastify";
-import {addCartToOrder, cancelOrder, getOrder} from "../../services/orderService";
+import {addCartToOrder, cancelOrder, getOrder, getOrderDetail} from "../../services/orderService";
 import {removeFromCart} from "../../services/cartService";
 import {deleteProducts} from "../../services/productService";
 
 const initialState = {
-    order: [localStorage.getItem("orders") ? JSON.parse(localStorage.getItem("orders")
-    ) : []]
+    orders: localStorage.getItem("orders") ? JSON.parse(localStorage.getItem("orders")
+    ) : [],
 }
 
 const orderSlice = createSlice({
@@ -15,9 +15,12 @@ const orderSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(getOrder.fulfilled, (state, action) => {
-            console.log(action.payload.data,'orderslice')
-            state.order = action.payload.data
-            localStorage.setItem("orders", JSON.stringify(state.order))
+            state.orders = action.payload.data
+            localStorage.setItem("orders", JSON.stringify(state.orders))
+        });
+        builder.addCase(getOrderDetail.fulfilled, (state, action) => {
+            state.orders = action.payload.data
+            // localStorage.setItem("orderDetail", JSON.stringify(state.order))
         });
         builder.addCase(addCartToOrder.fulfilled, (state, action) => {
             state.orders.push(action.payload)
