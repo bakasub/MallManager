@@ -10,6 +10,8 @@ exports.order_router = (0, express_1.Router)();
 exports.order_router.get('/all', order_controller_1.default.displayAllOrder);
 exports.order_router.get('/user/:user', order_controller_1.default.displayAnUserOrders);
 exports.order_router.get('/an-order/:order', order_controller_1.default.displayAnOrderDetails);
+exports.order_router.get('/confirmed-orders/:user', order_controller_1.default.displayUserConfirmedOrders);
 exports.order_router.post('/create-order', order_controller_1.default.createOrder);
 exports.order_router.put('/cancel-order/:order', order_controller_1.default.cancelOrder);
+exports.order_router.put('/confirm-order/:order', order_controller_1.default.confirmOrder);
 //# sourceMappingURL=order_router.js.map

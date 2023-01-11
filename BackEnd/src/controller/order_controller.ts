@@ -42,7 +42,7 @@ class OrderController {
         try {
             let orderId = req.params.order
             let result = await OrderService.cancelOrder(orderId)
-            return  res.status(200).json(result)
+            return res.status(200).json(result)
         } catch (e) {
             res.json({
                 mess: e.message
@@ -53,9 +53,33 @@ class OrderController {
     displayAnOrderDetails = async (req: Request, res: Response) => {
         try {
             let orderId = req.params.order
-            let result = await OrderService.displayAnOrderDetails(orderId)
+            let result = await OrderService.getAnOrderDetails(orderId)
             return res.status(200).json(result)
-        }catch (e) {
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
+
+    confirmOrder = async (req: Request, res: Response) => {
+        try {
+            let orderId = req.params.order
+            let result = await OrderService.confirmOrder(orderId)
+            return res.status(200).json(result)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
+
+    displayUserConfirmedOrders = async (req: Request, res: Response) => {
+        try {
+            let userId = req.params.user
+            let result = await OrderService.getUserConfirmedOrders(userId)
+            return res.status(200).json(result)
+        } catch (e) {
             res.json({
                 mess: e.message
             })
