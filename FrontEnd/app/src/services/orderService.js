@@ -29,17 +29,10 @@ export const cancelOrder = createAsyncThunk(
         return res
     }
 )
-// export const removeFromCart = createAsyncThunk(
-//     'carts/removeCart',
-//     async (data)=>{
-//         const res = await axios.delete(`http://localhost:8080/cart/remove-one?product_id=${data.product_id}&user_id=${data.user_id}`)
-//         return data
-//     }
-// )
-// export const clearCart = createAsyncThunk(
-//     'carts/clearCart',
-//     async (data)=>{
-//         const res = await axios.delete(`http://localhost:8080/cart/remove-all?user_id=${data.user_id}`)
-//         return data
-//     }
-// )
+export const confirmOrder = createAsyncThunk(
+    'order/confirmOrder',
+    async (data)=>{
+        const res = await axios.put(`http://localhost:8080/order/confirm-order/${data}`)
+        return data
+    }
+)

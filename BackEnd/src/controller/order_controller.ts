@@ -61,6 +61,29 @@ class OrderController {
             })
         }
     }
+    confirmOrder = async (req: Request, res: Response) => {
+        try {
+            let orderId = req.params.order
+            let result = await OrderService.confirmOrder(orderId)
+            return res.status(200).json(result)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
+
+    displayUserConfirmedOrders = async (req: Request, res: Response) => {
+        try {
+            let userId = req.params.user
+            let result = await OrderService.getUserConfirmedOrders(userId)
+            return res.status(200).json(result)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
 }
 
 export default new OrderController()

@@ -67,7 +67,6 @@ function Navbar() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 shadow-sm ">
                 <div className="container-fluid">
-                    <div className="container-fluid">
                         <ul className="navbar-nav">
                             <h3 className="navbar-brand fw-bold fs4" href="#">  {<Link className="navbar-brand" to={'/home'}><AmazonOutlined />AMAZING SHOP</Link>}</h3>
 
@@ -75,16 +74,16 @@ function Navbar() {
 
                         <input style={{width:500}} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                                onChange={(e)=>{
-                                                       setFind(e.target.value)
-                                                   }}
-                                            />
-                                            <button onClick={ (value)=>{
-                                                value= {name_product: find}
-                                                dispatch(findProducts(value))
-                                            }
-                                            } className="btn btn-outline-dark" type="submit"><i className="fa fa-search"
-                                                                                                aria-hidden="true">Search</i>
-                                            </button>
+                                   setFind(e.target.value)
+                               }}
+                        />
+                        <button onClick={ (value)=>{
+                            value= {name_product: find}
+                            dispatch(findProducts(value))
+                        }
+                        } className="btn btn-outline-dark" type="submit"><i className="fa fa-search"
+                                                                            aria-hidden="true">Search</i>
+                        </button>
                         <Link className="m-4 navbar-brand fw-bold fs4 " to={"/home"}>{userName.userName}</Link>
                         <div className="buttons">
                             <button href="" type="submit" className="ml-3 btn btn-outline-dark">
@@ -105,7 +104,6 @@ function Navbar() {
                                     ({cartTotalQuantity.cartTotalQuantity})</i></Link>
                             </button>
                         </div>
-                    </div>
                 </div>
             </nav>
 

@@ -2,17 +2,20 @@ import {AppDataSource} from "../data-source";
 import {Order} from "../model/order";
 import {OrderDetail} from "../model/order_detail";
 import {Cart} from "../model/cart";
+import {Product} from "../model/product";
 
 class OrderService {
     orderRepo: any
     orderDetailRepo: any
     cartRepo: any
+    productRepo: any
 
     constructor() {
         AppDataSource.initialize().then(async connection => {
             this.orderRepo = await connection.getRepository(Order)
             this.orderDetailRepo = await connection.getRepository(OrderDetail)
             this.cartRepo = await connection.getRepository(Cart)
+            this.productRepo = await connection.getRepository(Product)
         })
     }
 
@@ -68,7 +71,7 @@ class OrderService {
     }
 
     displayAnOrderDetails = async (orderId) => {
-        let query = `select p.name_product,o2.productQuantity,p.quantity,o.order_id
+        let query = `select p.name_product,o2.productQuantity,p.quantity,o.order_id, o.status
                      from orders as o
                      join orderdetail o2 on o.order_id = o2.order_id
                      join products p on o2.product_id = p.product_id
@@ -78,7 +81,36 @@ class OrderService {
     }
 
     confirmOrder = async (orderId) => {
+        let orderQuantity = await this.orderRepo.query(`select o.order_id, o2.productQuantity, p.quantity, p.product_id
+                                                        from orders as o
+                                                                 join orderdetail o2 on o.order_id = o2.order_id
+                                                                 join products p on o2.product_id = p.product_id
+                                                        where o.order_id = '${orderId}'`)
 
+        for (let i = 0; i < orderQuantity.length; i++) {
+            let newQuantity = orderQuantity[i].quantity - orderQuantity[i].productQuantity;
+            await this.productRepo.query(`update products
+                                          set quantity = '${newQuantity}'
+                                          where product_id = '${orderQuantity[i].product_id}'`)
+
+        }
+
+        await this.orderRepo.query(`update orders
+                                    set status = 2
+                                    where order_id = '${orderId}' `)
+        let result = await this.orderRepo.query(`select *
+                                                 from orders
+                                                 where order_id = '${orderId}'`)
+        return result
+    }
+
+    getUserConfirmedOrders = async (userId) => {
+        let query = `select *
+                     from orders
+                     where user_id = '${userId}'
+                       and status = 2`
+        let list = await this.orderRepo.query(query)
+        return list
     }
 }
 

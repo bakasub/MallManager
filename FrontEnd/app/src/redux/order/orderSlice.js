@@ -1,8 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {toast} from "react-toastify";
-import {addCartToOrder, cancelOrder, getOrder, getOrderDetail} from "../../services/orderService";
-import {removeFromCart} from "../../services/cartService";
-import {deleteProducts} from "../../services/productService";
+import {addCartToOrder, cancelOrder, confirmOrder, getOrder, getOrderDetail} from "../../services/orderService";
+
 
 const initialState = {
     orders: localStorage.getItem("orders") ? JSON.parse(localStorage.getItem("orders")
@@ -27,6 +25,9 @@ const orderSlice = createSlice({
         });
         builder.addCase(cancelOrder.fulfilled, (state, action) => {
             state.orders = state.orders.filter(item => item.order_id != action.payload)
+        });
+        builder.addCase(confirmOrder.fulfilled, (state, action) => {
+
         });
     }
 })

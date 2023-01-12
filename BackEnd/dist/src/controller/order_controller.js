@@ -65,6 +65,30 @@ class OrderController {
                 });
             }
         };
+        this.confirmOrder = async (req, res) => {
+            try {
+                let orderId = req.params.order;
+                let result = await order_service_1.default.confirmOrder(orderId);
+                return res.status(200).json(result);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
+        this.displayUserConfirmedOrders = async (req, res) => {
+            try {
+                let userId = req.params.user;
+                let result = await order_service_1.default.getUserConfirmedOrders(userId);
+                return res.status(200).json(result);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
     }
 }
 exports.default = new OrderController();
