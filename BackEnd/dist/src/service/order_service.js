@@ -50,7 +50,7 @@ class OrderService {
             return "Canceled order";
         };
         this.getAnOrderDetails = async (orderId) => {
-            let query = `select p.name_product, o2.productQuantity, p.quantity, o.order_id
+            let query = `select p.name_product, o2.productQuantity, p.quantity, o.order_id, p.price
                      from orders as o
                               join orderdetail o2 on o.order_id = o2.order_id
                               join products p on o2.product_id = p.product_id
@@ -59,7 +59,11 @@ class OrderService {
             return result;
         };
         this.confirmOrder = async (orderId) => {
-            let orderQuantity = await this.orderRepo.query(`select o.order_id, o2.productQuantity, p.quantity, p.product_id
+            let orderQuantity = await this.orderRepo.query(`select o.order_id,
+                                                               o2.productQuantity,
+                                                               p.quantity,
+                                                               p.product_id,
+                                                               o.status
                                                         from orders as o
                                                                  join orderdetail o2 on o.order_id = o2.order_id
                                                                  join products p on o2.product_id = p.product_id
