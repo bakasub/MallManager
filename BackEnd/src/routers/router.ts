@@ -5,7 +5,7 @@ import {cart_router} from "./cart_router";
 import {order_router} from "./order_router";
 
 export const router = Router();
-router.use('/products',product_router);
+router.use('/product',product_router);
 router.use('/auth',user_router);
 router.use('/cart',cart_router);
 router.use('/order',order_router);
